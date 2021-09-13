@@ -23,3 +23,4 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('admin/admin', [App\Http\Controllers\adminController::class, 'admin'])->name('admin');
 Route::resource('admin/siswa', siswaController::class);
+Route::resource('nilai/nilai', nilaiController::class);

@@ -39,13 +39,14 @@ class siswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-          $request->validate([
-            'absen' => 'required',
-            'nama' => 'required',
-            'kelas' => 'required',
-            'jk' => 'required',
-        ]);
+    {         
+        // if(request()->ajax())
+        //   $request->validate([
+        //     'absen' => 'required',
+        //     'nama' => 'required',
+        //     'kelas' => 'required',
+        //     'jk' => 'required',
+        // ]);
          
        
         siswa::create($request->all());

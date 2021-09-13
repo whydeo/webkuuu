@@ -260,6 +260,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
+            'text' => 'NILAI',
+            'url'  => 'nilai/nilai',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
             'text' => 'change_password',
             'url'  => 'change-password',
             'icon' => 'fas fa-fw  fa-unlock',
