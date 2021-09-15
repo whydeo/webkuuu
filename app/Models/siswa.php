@@ -9,7 +9,7 @@ class siswa extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'absen', 'nama','kelas','jk'
+        'absen', 'nama','jk'
     ];
 
 }

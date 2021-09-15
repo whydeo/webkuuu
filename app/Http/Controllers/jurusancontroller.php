@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\siswa;
 
-class nilaicontroller extends Controller
+class jurusancontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,6 @@ class nilaicontroller extends Controller
     public function index()
     {
         
-        $siswa = siswa::latest()->paginate();
-        return view('nilai.nilai',compact('siswa'));
     }
 
     /**

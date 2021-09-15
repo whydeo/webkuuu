@@ -12,7 +12,7 @@
         <div class="col-lg-12 margin-tb">
            
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('siswa.create') }}"> CTAMBAH SISWA</a>
+                <a class="btn btn-success" href="{{ route('siswa.create') }}"> \TAMBAH SISWA</a>
             </div>
         </div>
     </div>
@@ -75,10 +75,7 @@
 <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
 @stop
 @section('js')
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.js"></script> 
+
 <script type="text/javascript">
     $(function() {
         $('#example1').dataTable();

@@ -1,63 +1,161 @@
 @extends('adminlte::page')
 
-@section('title', 'nilai')
+@section('title', 'Dashboard')
 
-@section('content-nilai')
-            
-    <h1>admin</h1>
-
+@section('content_siswa')
+    <h1>Dashboard</h1>
 @stop
 
 @section('content')
+    <div class="row mt-5 mb-5">
+        <div class="col-lg-12 margin-tb">
+           
+            <div class="float-right">
+                <a class="btn btn-secondary" href="{{ route('siswa.index') }}"> Back</a>
+            </div>
+        </div>
+    </div>
+     
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <strong>Whoops!</strong> There were some problems with your input.<br><br>
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+     
+    <form action="{{ route('siswa.store') }}" method="POST">
+        @csrf
 
-   <body>
-   
-      <h2 class="text-center">1221</h2>
-      <h2 class="text-center"></h2>
-      <div class="box-body table-responsive">
-          <table id="example1" class="table table-bordered table-striped">
-              <thead>
-                  <tr>
-                      <th width="5px">absen</th>
-                      <th>nama</th>
-                      <th>kelas</th>
-                      <th>jenis kelamin</th>
-                  
-                  </tr>
-              </thead>
-              <tbody>
+        <button type="submit">Submit form</button>
+    <table id="example" class="display" style="width:">
+        <thead>
+            <tr>
+                <th>absen</th>
+                <th>nama</th>
+                <th>kelas</th>
+                <th>jenis kelamin</th>
+                <th>berkualitas</th>
+                <th>berbudi</th>
+                <th>berdaya</th>
+                <th>berhasil</th>
+                <th>keterangan</th>
                
-                    @foreach ($siswa as $siswa)
-                    <tr>
-                       
-                        <td>{{ $siswa->absen }}</td>
-                        <td>{{ $siswa->nama }}</td>
-                        <td>{{ $siswa->kelas }}</td>
-                        <td>{{ $siswa->jk }}</td>
-                      
-                  </tr>
-                  @endforeach
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                
+            </tr>
+                
+        </tbody>
+        <tfoot>
             
-              </tfoot>
-          </table>
-      </div><!-- /.box-body -->
-  </div> 
+        </tfoot>
+    </table>
+
+
+
+
+     
+       
 @stop
+
 @section('css')
-<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
+    
 @stop
+
 @section('js')
-<script src="js/jquery-1.11.1.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/dataTables.bootstrap.js"></script> 
+<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript">
-    $(function() {
-        $('#example1').dataTable();
+   $(document).ready(function() {
+    var table = $('#example').DataTable({
+        columnDefs: [{
+            orderable: false,
+            targets: [1,2,3]
+        }]
     });
+ 
+    $('button').click( function() {
+        var data = table.$('input, select').serialize();
+        alert(
+            "The following data would have been submitted to the server: \n\n"+
+            data.substr( 0, 120 )+'...'
+        );
+        return false;
+    } );
+} );
 </script>
+
+
+
 @stop
+
+
+
+
+
+<script type="text/javascript">$('#add-transaksi').on('click', function(e){
+    var maxTr = 30;
+    var count = document.getElementById("table-kas").getElementsByTagName("tr").length;
+    if(count <= maxTr){
+        e.preventDefault();
+        var images = `
+        <tr>
+            <td>
+                <input name="absen[]" class="form-control" type="text" required>
+            </td>
+            <td>
+                <input name="nama[]" class="form-control" type="text" required>
+            </td>
+            <td>
+                <input name="kelas[]" class="form-control" type="text" required>
+            </td>
+            <td>
+                <input name="jk[]" class="form-control" type="text" required>
+            </td>
+            <td>
+                <a class="fa fa-trash btn-danger btn-sm delete" href="javascript:void(0)"></a>
+            </td>
+        </tr>
+        `;
+        $(".select2").select2();
+        i++;
+    }else {
+        toastr.error("Maksimal 30 item !!")
+        return false;
+    }
+});
+
+$.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $('#save').on('click', function(e){
+            e.preventDefault();
+            var dataString = $("#siswa, #form-item ").serialize();
+            $.ajax({
+                type:'POST',
+                url: `{{ route('siswa.store') }}`,
+                data: dataString,
+                success: function(data)
+                {
+                    if(data.error){
+                        toastr.error(data.error);
+                    }else {
+                        window.location.href = data.route
+                    }
+                }, error: function(err){
+                    toastr(data.error);
+                }
+            });
+        });
+    </script>

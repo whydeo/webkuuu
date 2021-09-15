@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\siswa;
+use App\Models\kelas;
+use App\Models\jurusan;
+use DB;
 class siswaController extends Controller
 {
     /**
@@ -13,9 +16,8 @@ class siswaController extends Controller
      */
     public function index()
     {
-         $siswa = siswa::latest()->paginate(100);
-         return view('admin.index',compact('siswa'))
-             ->with('i', (request()->input('page', 1) - 1) * 100);
+         $siswa = siswa::all();
+         return view('admin.index')->with(compact('siswa'));
         
 
         // $siswa =  siswa ::all();
@@ -39,21 +41,30 @@ class siswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {         
-        // if(request()->ajax())
-        //   $request->validate([
-        //     'absen' => 'required',
-        //     'nama' => 'required',
-        //     'kelas' => 'required',
-        //     'jk' => 'required',
-        // ]);
-         
-       
-        siswa::create($request->all());
-        /// redirect jika sukses menyimpan data
-        return redirect()->route('siswa.index')
-                        ->with('success','siswa created successfully.');
-    }
+     {         
+            $data =$request ->all();
+            $siswa = new siswa;
+            $siswa ->absen=$data['absen'];
+            $siswa ->nama=$data['nama'];
+            $siswa ->jk=$data['jk'];
+            $siswa ->save(); 
+
+            $kelas = new kelas;
+            $kelas-> id_siswa=$siswa->id;
+            $kelas->kelas =$data['kelas'];
+            $kelas->wkelas =$data['wkelas'];
+            $kelas->save();
+
+            $jurusan = new jurusan;
+            $jurusan->id_kelas=$kelas->id;
+            $jurusan->id_siswa=$siswa->id;
+            $jurusan->nama_jurusan=$data['nama_jurusan'];
+            $jurusan->save();
+            return response('admin.index');
+     }
+
+
+    
 
     /**
      * Display the specified resource.
@@ -61,7 +72,7 @@ class siswaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(siswa $siswad)
+    public function show(siswa $siswa)
     {
         return view('admin.show',compact('siswa'));
     }
