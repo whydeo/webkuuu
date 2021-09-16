@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class siswa extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'absen', 'nama','jk'
-    ];
+    protected $guarded = [  ];
 
 }

@@ -28,24 +28,38 @@
                         <form name="add_item" id="add_item" class="form-inline">
                             {{ csrf_field() }}
 
-
+                            <tr>
+                                <th>wali kelas</th>
+                            </tr>
+                            <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="absen"  name="wkelas[]"></td>
+                            <br><br>
                             <div class="table-responsive">
                                 <table class='table table-bordered table-hover' id="tab_logic">
+                                   
                                     <thead>
+                                       
                                         <tr class='info'>
                                            
                                             <th style='width:10%;'>absen</th>
-                                            <th style='width:30%;'>nama</th>
+                                            <th style='width:25%;'>nama</th>
                                             <th style='width:10%;'>kelas</th>
+                                            <th style='width:10%;'>jurusan</th>
                                             <th style='width:10%;'>jenis kelamin</th>
                                             <th style='width:10%;'>ACTION</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr id="addr0">
-                                            <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="absen"  name="absen[]"></td>
-                                            <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="nama" name="nama[]"></td>
+                                            <td class="custom-tbl"><input class='form-control input-sm @error('absen')is invalid   @enderror  value="{{old('absen')}}" style='width:100%;'  type="text" id="absen"  name="absen[]"> @error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td>
+                                            <td class="custom-tbl"><input class='form-control input-sm @error('nama')is invalid   @enderror  value="{{old('nama')}}" style='width:100%;' type="text" id="nama" name="nama[]">@error('nama') <div class="invalid-feedback">{{message}}@enderror</div></td>
                                             <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="kelas" name="kelas[]"></td>
+                                            <td class="custom-tbl"><select class='form-control input-sm' style='width:100%;' type="text" id="jurusan" name="jurusan[]">
+                                                <option value="">-pilih</option>
+                                               @foreach ($jurusan as $item)
+                                               <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
+                                               @endforeach
+                                               
+                                            </select></td>
                                             <td class="custom-tbl"><input class=' form-control input-sm' id="jk" style='width:100%;' type="text" name="jk[]"></td>
                                             <td class="custom-tbl"><button type="button" id="add" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-plus"></span></button></td>
                                         </tr>
@@ -78,9 +92,12 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 
 @stop
-<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+
 
 @section('js')
+<script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
+<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
  <meta name="_token"  content="{{csrf_token()}}">
   <script> console.log('Hi!'); </script>
     <script type="text/javascript">
@@ -96,10 +113,11 @@
                 $('#dynamic_field').append('<tr id="row' + i 
                         + '" class="dynamic-added">' + i 
                         + '" <td class="custom-tbl"><input id="absen' + i 
-                        + '"class="form-control input-sm" style="width:100%;" type="text"' + i 
-                        + ');" name="absen[]"></td><td class="custom-tbl"><input id="nama"' + i 
-                        + '"class="form-control input-sm" style="width:100%;" type="text" name="nama[]"></td><td class="custom-tbl"><input id="kelas' + i 
-                        + '" class="form-control input-sm" style="width:100%;" type="text" name="kelas[]"></td><td class="custom-tbl"><input id="jk' + i 
+                        + '"class="form-control input-sm @error('absen')is invalid   @enderror  value="{{old('absen')}}" style="width:100%;" type="text"' + i 
+                        + ');" name="absen[]"> @error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td><td class="custom-tbl"><input id="nama"' + i 
+                        + '"class="form-control input-sm @error('nama')is invalid   @enderror  value="{{old('nama')}}" style="width:100%;" type="text" name="nama[]">@error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td><td class="custom-tbl"><input id="kelas' + i 
+                        + '" class="form-control input-sm" style="width:100%;" type="text" name="kelas[]"></td><td class="custom-tbl"><select id="jurusan' + i 
+                        + '" class="form-control input-sm" style="width:100%;" type="text" name="jurusan[]"><option value="">-pilih</option> @foreach ($jurusan as $item)  <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>   @endforeach </select></td><td class="custom-tbl"><input id="jk' + i 
                         + '" class="form-control input-sm" style="width:100%;" type="text" ' + i 
                         + ');" name="jk[]"></td</td><td class="custom-tbl"><button type="button" name="remove" id="' + i 
                         + '" class="btn btn-danger btn-sm btn_remove"><span class="glyphicon glyphicon-remove"></span></button></td></tr>');
@@ -110,6 +128,7 @@
                 var button_id = $(this).attr("id");
                 $('#row' + button_id + '').remove();
             });
+            'use strict';
         
             $.ajaxSetup({
                 headers: {
@@ -118,20 +137,32 @@
             });
         
         
-            $('#submit').click(function () {
+         $('#submit').click(function () {
                 $.ajax({
                     url: "{{route('siswa.store')}}",
                     method: "POST",
                     data: $('#add_item').serialize(),
                     type: 'json',
-        
-
-
+                  
                 });
+           
             });
         
         });
+      
+ 
+
+
+      
                 </script>
         
            
 @stop
+{{-- .then((response)=>{
+    console.log("response:",response,response.headers);
+    console.log("succes");
+})
+.catch((error)=>{
+    console.log(error);
+    console.log("ERRRR::",error.response.data);
+}) --}}

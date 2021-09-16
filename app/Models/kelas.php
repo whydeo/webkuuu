@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class kelas extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id_siswa','kelas','wkelas'
-    ];
+    protected $guarded = [ ];
 
 }

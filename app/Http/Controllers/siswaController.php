@@ -31,7 +31,8 @@ class siswaController extends Controller
      */
     public function create()
     {
-        return view('admin.create');
+        $jurusan = jurusan::all();
+        return view('admin.create',compact('jurusan'));
     }
 
     /**
@@ -60,11 +61,10 @@ class siswaController extends Controller
             $jurusan->id_siswa=$siswa->id;
             $jurusan->nama_jurusan=$data['nama_jurusan'];
             $jurusan->save();
-            return response('admin.index');
+
+            return response ()-> json(['route'=>route('admin.index')]);
+           
      }
-
-
-    
 
     /**
      * Display the specified resource.
