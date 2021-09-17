@@ -43,7 +43,7 @@
                          
                           <td>{{ $siswa->absen }}</td>
                           <td>{{ $siswa->nama }}</td>
-                          <td>{{ $siswa->kelas }}</td>
+                          <td>{{ $siswa->id_kelas }}</td>
                           <td>{{ $siswa->jk }}</td>
                         
                    

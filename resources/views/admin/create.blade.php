@@ -9,16 +9,9 @@
 
 @section('content')  
 <body>
-    {{-- <br>
-    @if ( session::has('success'))
-    <div class="alert alert-success">
-        {{session::get('success')}}
-
-    </div>
-        
-    @endif --}}
     <div class="container-fluid">
-
+ 
+       
         <div class="row">
             <div class="col-md-12">
                 <div class="panel panel-default">
@@ -27,40 +20,34 @@
 
                         <form name="add_item" id="add_item" class="form-inline">
                             {{ csrf_field() }}
-
-                            <tr>
-                                <th>wali kelas</th>
-                            </tr>
-                            <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="absen"  name="wkelas[]"></td>
-                            <br><br>
+                            
                             <div class="table-responsive">
                                 <table class='table table-bordered table-hover' id="tab_logic">
-                                   
+                         
                                     <thead>
                                        
                                         <tr class='info'>
                                            
                                             <th style='width:10%;'>absen</th>
                                             <th style='width:25%;'>nama</th>
-                                            <th style='width:10%;'>kelas</th>
-                                            <th style='width:10%;'>jurusan</th>
                                             <th style='width:10%;'>jenis kelamin</th>
+                                            <th style='width:10%;'>kelas</th>
                                             <th style='width:10%;'>ACTION</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr id="addr0">
-                                            <td class="custom-tbl"><input class='form-control input-sm @error('absen')is invalid   @enderror  value="{{old('absen')}}" style='width:100%;'  type="text" id="absen"  name="absen[]"> @error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td>
-                                            <td class="custom-tbl"><input class='form-control input-sm @error('nama')is invalid   @enderror  value="{{old('nama')}}" style='width:100%;' type="text" id="nama" name="nama[]">@error('nama') <div class="invalid-feedback">{{message}}@enderror</div></td>
-                                            <td class="custom-tbl"><input class='form-control input-sm' style='width:100%;' type="text" id="kelas" name="kelas[]"></td>
-                                            <td class="custom-tbl"><select class='form-control input-sm' style='width:100%;' type="text" id="jurusan" name="jurusan[]">
-                                                <option value="">-pilih</option>
-                                               @foreach ($jurusan as $item)
-                                               <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>
-                                               @endforeach
-                                               
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="custom-tbl"><select id="kelas" class="form-control " style="width:100%;" type="text" name="kelas[]">
+                                            <option value="">pilih kelas</option>
+                                            @foreach ($kelas as $item)
+                                            <option value="{{$item->id_kelas}}">{{$item->kelas}}</option>
+                                            @endforeach
                                             </select></td>
-                                            <td class="custom-tbl"><input class=' form-control input-sm' id="jk" style='width:100%;' type="text" name="jk[]"></td>
+                                             
+                                           
                                             <td class="custom-tbl"><button type="button" id="add" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-plus"></span></button></td>
                                         </tr>
                                     </thead>
@@ -107,22 +94,20 @@
         $(document).ready(function () {
             var i = 1;
         
-        
             $('#add').click(function () {
                 i++;
                 $('#dynamic_field').append('<tr id="row' + i 
                         + '" class="dynamic-added">' + i 
-                        + '" <td class="custom-tbl"><input id="absen' + i 
-                        + '"class="form-control input-sm @error('absen')is invalid   @enderror  value="{{old('absen')}}" style="width:100%;" type="text"' + i 
-                        + ');" name="absen[]"> @error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td><td class="custom-tbl"><input id="nama"' + i 
-                        + '"class="form-control input-sm @error('nama')is invalid   @enderror  value="{{old('nama')}}" style="width:100%;" type="text" name="nama[]">@error('absen') <div class="invalid-feedback">{{message}}@enderror</div></td><td class="custom-tbl"><input id="kelas' + i 
-                        + '" class="form-control input-sm" style="width:100%;" type="text" name="kelas[]"></td><td class="custom-tbl"><select id="jurusan' + i 
-                        + '" class="form-control input-sm" style="width:100%;" type="text" name="jurusan[]"><option value="">-pilih</option> @foreach ($jurusan as $item)  <option value="{{$item->id}}">{{$item->nama_jurusan}}</option>   @endforeach </select></td><td class="custom-tbl"><input id="jk' + i 
+                        + '"' + i 
+                        + '"<td class="custom-tbl"><input id="absen' + i 
+                        + '"class="form-control input-sm" style="width:100%;" type="text"' + i 
+                        + ');" name="absen[]"></td><td class="custom-tbl"><input id="nama"' + i 
+                        + '"class="form-control input-sm" style="width:100%;" type="text" name="nama[]"></td>' + i 
+                        + '" <td class="custom-tbl"><input id="jk' + i 
                         + '" class="form-control input-sm" style="width:100%;" type="text" ' + i 
-                        + ');" name="jk[]"></td</td><td class="custom-tbl"><button type="button" name="remove" id="' + i 
+                        + ');" name="jk[]"></td</td>  <td></td><td class="custom-tbl"><button type="button" name="remove" id="' + i 
                         + '" class="btn btn-danger btn-sm btn_remove"><span class="glyphicon glyphicon-remove"></span></button></td></tr>');
             });
-        
         
             $(document).on('click', '.btn_remove', function () {
                 var button_id = $(this).attr("id");

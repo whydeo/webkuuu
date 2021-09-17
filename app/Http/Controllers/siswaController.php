@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\siswa;
 use App\Models\kelas;
-use App\Models\jurusan;
+
+use Illuminate\Support\Facades\Validator;
 use DB;
 class siswaController extends Controller
 {
@@ -15,9 +16,14 @@ class siswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+
+
     {
-         $siswa = siswa::all();
-         return view('admin.index')->with(compact('siswa'));
+        $siswa = siswa::all();
+        return view('admin.index')->with(compact('siswa'));
+
+        // 
+        //  return view('admin.index')->with(compact('siswa'));
         
 
         // $siswa =  siswa ::all();
@@ -31,8 +37,9 @@ class siswaController extends Controller
      */
     public function create()
     {
-        $jurusan = jurusan::all();
-        return view('admin.create',compact('jurusan'));
+      
+        $kelas = kelas::all();
+        return view('admin.create',compact('kelas'));
     }
 
     /**
@@ -42,30 +49,58 @@ class siswaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-     {         
-            $data =$request ->all();
-            $siswa = new siswa;
-            $siswa ->absen=$data['absen'];
-            $siswa ->nama=$data['nama'];
-            $siswa ->jk=$data['jk'];
-            $siswa ->save(); 
+     {      
+         
+        
+        $siswa = [];
+        $validator = Validator::make($request->all(), $siswa);
+        foreach ($request->input('absen') as $key => $value) {
+            $siswa["absen.{$key}"] = 'required';
+            $siswa["nama.{$key}"] = 'required';
+            $siswa["jk.{$key}"] = 'required';
+            $siswa["kelas.{$key}"] = 'required';
+          
+        if ($validator->passes()) {
+                $siswa = new siswa;
+                $siswa->absen = $request->get("absen")[$key];
+                $siswa->nama = $request->get("nama")[$key];
+                $siswa->jk = $request->get("jk")[$key];
+                $siswa->id_kelas = $request->get("kelas")[$key];
+                $siswa->save();
+            }
+       
+        
 
-            $kelas = new kelas;
-            $kelas-> id_siswa=$siswa->id;
-            $kelas->kelas =$data['kelas'];
-            $kelas->wkelas =$data['wkelas'];
-            $kelas->save();
 
-            $jurusan = new jurusan;
-            $jurusan->id_kelas=$kelas->id;
-            $jurusan->id_siswa=$siswa->id;
-            $jurusan->nama_jurusan=$data['nama_jurusan'];
-            $jurusan->save();
 
-            return response ()-> json(['route'=>route('admin.index')]);
+
+
+
+
+
+
+            // $data =$request ->all();
+            // $siswa = new siswa;
+            // $siswa ->absen=$data['absen'];
+            // $siswa ->nama=$data['nama'];
+            // $siswa ->jk=$data['jk'];
+            // $siswa ->save(); 
+
+            // $kelas = new kelas;
+            // $kelas-> id_siswa=$siswa->id;
+            // $kelas->kelas =$data['kelas'];
+            // $kelas->wkelas =$data['wkelas'];
+            // $kelas->save();
+
+            // $jurusan = new jurusan;
+            // $jurusan->id_kelas=$kelas->id;
+            // $jurusan->id_siswa=$siswa->id;
+            // $jurusan->nama_jurusan=$data['nama_jurusan'];
+            // $jurusan->save();
+
+            // return response ()-> json(['route'=>route('admin.index')]);
            
-     }
-
+        }}
     /**
      * Display the specified resource.
      *
