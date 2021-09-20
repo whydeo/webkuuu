@@ -40,6 +40,7 @@ class siswaController extends Controller
       
         $kelas = kelas::all();
         return view('admin.create',compact('kelas'));
+
     }
 
     /**
@@ -58,7 +59,7 @@ class siswaController extends Controller
             $siswa["absen.{$key}"] = 'required';
             $siswa["nama.{$key}"] = 'required';
             $siswa["jk.{$key}"] = 'required';
-            $siswa["kelas.{$key}"] = 'required';
+          
           
         if ($validator->passes()) {
                 $siswa = new siswa;
@@ -69,11 +70,9 @@ class siswaController extends Controller
                 $siswa->save();
             }
        
-        
 
 
-
-
+           
 
 
 

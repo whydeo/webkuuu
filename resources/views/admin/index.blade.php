@@ -39,11 +39,15 @@
                 <tbody>
                  
                       @foreach ($siswa as $siswa)
+                      
                       <tr>
                          
                           <td>{{ $siswa->absen }}</td>
                           <td>{{ $siswa->nama }}</td>
-                          <td>{{ $siswa->id_kelas }}</td>
+                            @foreach ($siswa->kelas as $item)
+                            <td>{{ $item->kelas  }}</td>
+                                
+                            @endforeach
                           <td>{{ $siswa->jk }}</td>
                         
                    
