@@ -10,7 +10,7 @@ class siswa extends Model
     use HasFactory;
     
     public function kelas(){
-        return $this->belongsTo('app\Models\kelas','id_kelas','id'); 
+        return $this->belongsTo(kelas::class, 'foreign_key'); 
     }
 
 }
