@@ -19,8 +19,33 @@ class siswaController extends Controller
 
 
     {
-        $siswa = siswa::all();
+        // $siswa = DB::table('siswas')
+        // ->join('kelas','siswas.id','=','kelas.id_kelas')
+        // ->select('siswas.*','kelas.*')
+        // ->get();
+
+        // $siswa=siswa::find('1')->kelas;
+        // 
+
+        $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
+        ->select('siswas.*', 'kelas.kelas as kelas')
+        ->get();
+
         return view('admin.index')->with(compact('siswa'));
+
+
+
+
+
+
+
+
+    
+
+        //  $siswa = siswa::all();
+        //
+        
+       
 
         // 
         //  return view('admin.index')->with(compact('siswa'));
@@ -59,8 +84,7 @@ class siswaController extends Controller
             $siswa["absen.{$key}"] = 'required';
             $siswa["nama.{$key}"] = 'required';
             $siswa["jk.{$key}"] = 'required';
-          
-          
+
         if ($validator->passes()) {
                 $siswa = new siswa;
                 $siswa->absen = $request->get("absen")[$key];
@@ -69,8 +93,6 @@ class siswaController extends Controller
                 $siswa->id_kelas = $request->get("kelas")[$key];
                 $siswa->save();
             }
-       
-
 
            
 

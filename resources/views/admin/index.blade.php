@@ -42,14 +42,12 @@
                       
                       <tr>
                          
+
                           <td>{{ $siswa->absen }}</td>
                           <td>{{ $siswa->nama }}</td>
-                            @foreach ($siswa->kelas as $item)
-                            <td>{{ $item->kelas  }}</td>
-                                
-                            @endforeach
+                          <td>{{ $siswa->kelas }}</td>
                           <td>{{ $siswa->jk }}</td>
-                        
+
                    
                     <td class="text-center">
                     <form action="{{ route('siswa.destroy',$siswa->id) }}" method="POST">
