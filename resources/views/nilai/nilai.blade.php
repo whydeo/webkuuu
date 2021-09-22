@@ -7,155 +7,116 @@
 @stop
 
 @section('content')
-    <div class="row mt-5 mb-5">
-        <div class="col-lg-12 margin-tb">
-           
-            <div class="float-right">
-                <a class="btn btn-secondary" href="{{ route('siswa.index') }}"> Back</a>
-            </div>
-        </div>
+<body>
+    <br>
+    <br>
+
+    <div class="container">  
+        <form action="nilai/nilai" method="GETR">
+    <div class="input-group mb-3">
+    <input type="text" class="form-control" name="search" >
+    <button class="btn btn-outline-secondary" type="submit" ">search</button>
+    </div>  
+    </form>      
     </div>
-     
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
-     
-    <form action="{{ route('siswa.store') }}" method="POST">
-        @csrf
+    <center>  <span>form input nilai</span></center>
+    <br>
 
-        <button type="submit">Submit form</button>
-    <table id="example" class="display" style="width:">
-        <thead>
-            <tr>
-                <th>absen</th>
-                <th>nama</th>
-                <th>kelas</th>
-                <th>jenis kelamin</th>
-                <th>berkualitas</th>
-                <th>berbudi</th>
-                <th>berdaya</th>
-                <th>berhasil</th>
-                <th>keterangan</th>
-               
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                
-            </tr>
-                
-        </tbody>
-        <tfoot>
+      <table id="my_table_1" data-toggle="table" data-sort-stable="true">
+          <thead>
+          <tr>
+              <th data-sortable="true">absen</th>
+              <th data-sortable="true">nama</th>
+              <th data-sortable="true">kelas</th>
+              <th data-sortable="false">jenis kelamin</th>
+              <th data-sortable="true">A</th>
+              <th data-sortable="true">B</th>
+              <th data-sortable="true">C</th>
+              <th data-sortable="false">D</th>
+              <th data-sortable="true">A</th>
+              <th data-sortable="true">B</th>
+              <th data-sortable="true">C</th>
+              <th data-sortable="false">D</th>
+              <th data-sortable="true">A</th>
+              <th data-sortable="true">B</th>
+              <th data-sortable="true">C</th>
+              <th data-sortable="false">D</th>
+              <th data-sortable="true">A</th>
+              <th data-sortable="true">B</th>
+              <th data-sortable="true">C</th>
+              <th data-sortable="false">D</th>
+              <th data-sortable="false">keterangan</th>
+          </tr>
+          </thead>
+         <tbody>
+            @foreach ($siswa as $siswa)
+              <tr>
+                  
+                    <td>{{ $siswa->absen }}</td>
+                    <td>{{ $siswa->nama }}</td>
+                    <td>{{ $siswa->kelas }}</td>
+                    <td>{{ $siswa->jk }}</td>
+                      <td>
+                        <select>
+                        <option val="1">A</option>
+                        <option val="2" selected>B</option>
+                        <option val="3">C</option>
+        
+                    </select>
+                    </td>
+                    <td>
+                        <select>
+                        <option val="1">A</option>
+                        <option val="2" selected>B</option>
+                        <option val="3">C</option>
+        
+                    </select>
+                    </td>
+                  </select>
+                  </td>
+                 
+              </tr>
+        @endforeach
             
-        </tfoot>
-    </table>
+              </tr>
+              </tbody>
+      </table>
+      
+    
+    </div>
 
-
-
-
-     
+</body>
        
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.1/css/jquery.dataTables.min.css">
-    
+  
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
 @stop
 
 @section('js')
-<script src="https://cdn.datatables.net/1.11.0/js/jquery.dataTables.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-<script src="https://cdn.datatables.net/1.11.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/bootstrap-table@1.15.4/dist/bootstrap-table.min.js"></script>
 <script type="text/javascript">
-   $(document).ready(function() {
-    var table = $('#example').DataTable({
-        columnDefs: [{
-            orderable: false,
-            targets: [1,2,3]
-        }]
-    });
- 
-    $('button').click( function() {
-        var data = table.$('input, select').serialize();
-        alert(
-            "The following data would have been submitted to the server: \n\n"+
-            data.substr( 0, 120 )+'...'
-        );
-        return false;
-    } );
-} );
+    $(document).ready(function() {
+      console.log('ready');
+      $('#my_table_1').find('input[type="date"]').change(function() {
+        console.log('Table 1.Date was changed. Need to check if table is sorted by column C.If so - call the table sort.');
+      });
+      $('#my_table_1').find('select').change(function() {
+        console.log('Table 1.Selection was changed. Need to check if table is sorted by column B.If so - call the table sort.');
+      });
+     });
 </script>
-
-
-
 @stop
 
 
 
-
-
-<script type="text/javascript">$('#add-transaksi').on('click', function(e){
-    var maxTr = 30;
-    var count = document.getElementById("table-kas").getElementsByTagName("tr").length;
-    if(count <= maxTr){
-        e.preventDefault();
-        var images = `
-        <tr>
-            <td>
-                <input name="absen[]" class="form-control" type="text" required>
-            </td>
-            <td>
-                <input name="nama[]" class="form-control" type="text" required>
-            </td>
-            <td>
-                <input name="kelas[]" class="form-control" type="text" required>
-            </td>
-            <td>
-                <input name="jk[]" class="form-control" type="text" required>
-            </td>
-            <td>
-                <a class="fa fa-trash btn-danger btn-sm delete" href="javascript:void(0)"></a>
-            </td>
-        </tr>
-        `;
-        $(".select2").select2();
-        i++;
-    }else {
-        toastr.error("Maksimal 30 item !!")
-        return false;
-    }
-});
-
-$.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-        $('#save').on('click', function(e){
-            e.preventDefault();
-            var dataString = $("#siswa, #form-item ").serialize();
-            $.ajax({
-                type:'POST',
-                url: `{{ route('siswa.store') }}`,
-                data: dataString,
-                success: function(data)
-                {
-                    if(data.error){
-                        toastr.error(data.error);
-                    }else {
-                        window.location.href = data.route
-                    }
-                }, error: function(err){
-                    toastr(data.error);
-                }
-            });
-        });
-    </script>

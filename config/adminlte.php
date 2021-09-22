@@ -234,21 +234,7 @@ return [
             'icon' => 'fas fa-fw fa-home',
         ],
     
-        [
-            'text' => 'GURU',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-users',
-        ],
-        [
-            'text' => 'PEMBINA',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw  fa-users',
-        ],
-        [
-            'text' => 'WALI KELAS',
-            'url'  => 'profile',
-            'icon' => 'fas fa-fw fa-users',
-        ],
+       
         [
             'text' => 'ADMIN',
             'url'  => 'admin/admin',

@@ -19,6 +19,7 @@ class siswaController extends Controller
 
 
     {
+
         // $siswa = DB::table('siswas')
         // ->join('kelas','siswas.id','=','kelas.id_kelas')
         // ->select('siswas.*','kelas.*')
@@ -33,16 +34,7 @@ class siswaController extends Controller
 
         return view('admin.index')->with(compact('siswa'));
 
-
-
-
-
-
-
-
-    
-
-        //  $siswa = siswa::all();
+        // 
         //
         
        
@@ -84,20 +76,15 @@ class siswaController extends Controller
             $siswa["absen.{$key}"] = 'required';
             $siswa["nama.{$key}"] = 'required';
             $siswa["jk.{$key}"] = 'required';
-
         if ($validator->passes()) {
                 $siswa = new siswa;
                 $siswa->absen = $request->get("absen")[$key];
                 $siswa->nama = $request->get("nama")[$key];
                 $siswa->jk = $request->get("jk")[$key];
-                $siswa->id_kelas = $request->get("kelas")[$key];
+                $siswa->id_kelas = $request->get("kelas")[0];
                 $siswa->save();
+                
             }
-
-           
-
-
-
 
 
             // $data =$request ->all();
@@ -121,7 +108,8 @@ class siswaController extends Controller
 
             // return response ()-> json(['route'=>route('admin.index')]);
            
-        }}
+        }
+    }
     /**
      * Display the specified resource.
      *

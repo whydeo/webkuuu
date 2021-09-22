@@ -14,9 +14,16 @@ class nilaicontroller extends Controller
      */
     public function index()
     {
-        
-        $siswa = siswa::latest()->paginate();
-        return view('nilai.nilai',compact('siswa'));
+            // $posts = Job::search($searchTerm, $cityName)
+            // ->orderBy('created_at', 'desc')
+            // ->where('id_kelas', '0')
+            // ->paginate(10);
+            
+            $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
+            ->select('siswas.*', 'kelas.kelas as kelas')
+            ->get();
+            $siswa = siswa::latest()->paginate(5);
+        return view('nilai.nilai')->with(compact('siswa'));
     }
 
     /**
