@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\siswa;
 
-class nilaicontroller extends Controller
+class detailnilaicontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,15 +13,7 @@ class nilaicontroller extends Controller
      */
     public function index()
     {
-            // $posts = Job::search($searchTerm, $cityName)
-            // ->orderBy('created_at', 'desc')
-            // ->where('id_kelas', '0')
-            // ->paginate(10);
-            
-            $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
-            ->select('siswas.*', 'kelas.kelas as kelas')
-            ->get();
-        return view('nilai.nilai')->with(compact('siswa'));
+        //
     }
 
     /**

@@ -21,7 +21,8 @@
     </div>
     <center>  <span>form input nilai</span></center>
     <br>
-
+    <form name="add_item" id="add_item" >
+      {{ csrf_field() }}
       <table id="my_table_1" data-toggle="table" data-sort-stable="true">
           <thead>
           <tr>
@@ -52,10 +53,12 @@
             @foreach ($siswa as $siswa)
               <tr>
                   
-                    <td>{{ $siswa->absen }}</td>
-                    <td>{{ $siswa->nama }}</td>
-                    <td>{{ $siswa->kelas }}</td>
-                    <td>{{ $siswa->jk }}</td>
+                                  
+                <td><input size="2%" value="{{ $siswa->absen }}" name="absen" readonly autofocus ></td>
+                <td><input  value="{{ $siswa->nama }}" name="absen" readonly autofocus ></td>
+                <td><input size="10%" value="{{ $siswa->kelas }}" name="absen" readonly autofocus ></td>
+                <td><input size="10%"  value="{{ $siswa->jk }}" name="absen" readonly autofocus ></td>
+
                       <td>
                         <select>
                         <option val="1">A</option>
@@ -81,10 +84,13 @@
               </tr>
               </tbody>
       </table>
-      
-    
-    </div>
+      <br>     
+       <br>
+      <br>
+     
 
+       <button type="button" id="submit" name="submit" class="btn btn-warning">Submit</button>
+    </div>
 </body>
        
 @stop
@@ -108,12 +114,24 @@
 <script type="text/javascript">
     $(document).ready(function() {
       console.log('ready');
-      $('#my_table_1').find('input[type="date"]').change(function() {
-        console.log('Table 1.Date was changed. Need to check if table is sorted by column C.If so - call the table sort.');
-      });
-      $('#my_table_1').find('select').change(function() {
-        console.log('Table 1.Selection was changed. Need to check if table is sorted by column B.If so - call the table sort.');
-      });
+      $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+        
+        
+         $('#submit').click(function () {
+                $.ajax({
+                    url: "{{route('siswa.store')}}",
+                    method: "POST",
+                    data: $('#add_item').serialize(),
+                    type: 'json',
+                  
+                });
+           
+            });
+
      });
 </script>
 @stop

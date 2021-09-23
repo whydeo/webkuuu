@@ -19,9 +19,10 @@ class CreateSiswasTable extends Migration
             $table->string('absen');
             $table->string('nama');
             $table->string('jk');
-             $table->bigInteger('id_kelas')->unsigned();
-             $table->timestamps();
-             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');  
+            $table->bigInteger('id_kelas')->unsigned();
+            $table->timestamps();
+            $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');
+
         });
     }
 

@@ -26,3 +26,5 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('admin/admin', [App\Http\Controllers\adminController::class, 'admin'])->name('admin');
 Route::resource('admin/siswa', siswaController::class);
 Route::resource('nilai/nilai', nilaiController::class);
+Route::resource('nilai/detailnilai', nilaiController::class);
+

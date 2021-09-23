@@ -9,10 +9,13 @@ class nilai extends Model
 {
     use HasFactory;
      
-    public static function siswa($query, $searchTerm, $id_kelas)
-    {
-        return $query->where('id_kelas', 'like', '%' .$searchTerm. '%')
-            ->join('cities', 'jobs.city_id', '=', 'cities.id')
-            ->where('cities.name', 'like', '%' . $cityName . '%');
+    public function siswa(){
+        return $this->belongsTo(siswa::class); 
     }
+     
+    public function detailnilai(){
+        return $this->hasMany(detailnilai::class); 
+    }
+
+
 }

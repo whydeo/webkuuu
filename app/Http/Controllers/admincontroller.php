@@ -23,7 +23,7 @@ class adminController extends Controller
      */
     public function admin()
     {
-        $siswa = siswa::latest();
+       
         return view('admin.admin',compact('siswa'));
     }
   
