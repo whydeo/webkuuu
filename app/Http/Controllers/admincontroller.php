@@ -24,7 +24,7 @@ class adminController extends Controller
     public function admin()
     {
        
-        return view('admin.admin',compact('siswa'));
+        return view('admin.admin');
     }
   
   

@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class detailnilai extends Model
 {
     use HasFactory;
+    
 }
