@@ -22,7 +22,7 @@
                                 <span class="fas fa-search"></span>
                             </button>
                         </span>
-                        <input type="text" class="form-control mr-2" name="term" placeholder="Search nilai" id="term">
+                        <input type="text" class="form-control mr-2" name="keyword" value="{{ $keyword }}"  placeholder="Search nilai" id="term">
                         <a href="{{ route('nilai.index') }}" class=" mt-1">
                             <span class="input-group-btn">
                                 <button class="btn btn-danger" type="button" title="Refresh page">
@@ -37,6 +37,7 @@
     </div>
     <center>  <span>form input nilai</span></center>
     <br>
+    
     <form name="add_item" id="add_item" >
       {{ csrf_field() }}
       <table id="my_table_1" data-toggle="table" data-sort-stable="true">
@@ -69,13 +70,15 @@
               <th data-sortable="false">keterangan</th>
           </tr>
           </thead>
-         <tbody>
+         <tbody>    
+        
+            @if ($siswa->count() > 0)
             @foreach ($siswa as $siswa)
               <tr>                               
                 <td><label >{{ $siswa->absen }} </label></td>
                 <td><label >{{ $siswa->nama }}</td>
-                <td><label >{{ $siswa->kelas }}</td>
-                <td><label >{{ $siswa->jk }}</td>
+                <td><label>{{ $siswa->jk }}</td>
+                <td><label  for="input" name="kelas">{{ $siswa->kelas }}</td>
                 <td><input  type="number"  id="inputProductPrice" oninput="myFunction()" ></td>
                 <td> <input type="number"  id="inputGST" oninput="myFunction()"> </td>
                 <td><input type="number"  id="inputDelivery" oninput="myFunction()"> </td>
@@ -92,19 +95,14 @@
                 <td> <input type="number"  id="inputgift1" oninput="myFunction()"> </td>
                 <td><input type="number"  id="inputvery1" oninput="myFunction()"> </td>
                 <td> <input type="number"   id="bagii1" oninput="myFunction()">
-                <td><input  type="text" id="tatol1"   name="berdaya[]"></td>
+                <td><input  type="text" id="tato"   name="berdaya[]"></td>
                 
                 <td><input  type="number" id="inputpiece2" oninput="myFunction()" ></td>
                 <td> <input type="number" id="inputgift2" oninput="myFunction()"> </td>
                 <td><input type="number"  id="inputvery2" oninput="myFunction()"> </td>
                 <td> <input type="number" id="bagii2" oninput="myFunction()">
                 <td><input  type="text"   id="tatol2"   name="berhasil[]"></td>
-                <td> <input type="textarea">
 
-               
-
-
-              
               </tr>
         @endforeach
             
@@ -119,6 +117,8 @@
        <button type="button" id="submit" name="submit" class="btn btn-warning">Submit</button>
     </div>
 </form>
+
+@endif
 </body>
        
 @stop
@@ -166,29 +166,69 @@
         var gst = document.getElementById("inputGST").value;
         var delivery = document.getElementById("inputDelivery").value;
         var bagi = document.getElementById("bagi").value;
-        var average = +price + +gst + +delivery + +bagi ;
-        document.getElementById("total").value = average /4;
+        var ave= +price + +gst + +delivery + +bagi ;
+        var n1=ave /4;
+        if(n1 ==1)
+        document.getElementById("total").value ="a" ;
+       else  if(n1 ==2)
+        document.getElementById("total").value ="b" ;
+       else  if(n1 ==3)
+        document.getElementById("total").value ="c" ;
+       else  if(n1 ==4)
+        document.getElementById("total").value ="d" ;
+        
+        
          
         var piece = document.getElementById("inputpiece").value;
         var gift = document.getElementById("inputgift").value;
         var very = document.getElementById("inputvery").value;
         var bagii = document.getElementById("bagii").value;
         var average = +piece + +gift + +very + +bagii ;
-        document.getElementById("tatol").value = average /4;
+        var n2=average /4;
+        if(n2 ==1)
+        document.getElementById("tatol").value ="a" ;
+       else  if(n2 ==2)
+        document.getElementById("tatol").value ="b" ;
+       else  if(n2 ==3)
+        document.getElementById("tatol").value ="c" ;
+       else  if(n2 ==4)
+        document.getElementById("tatol").value ="d" ;
+        
 
         var piece1 = document.getElementById("inputpiece1").value;
         var gift1 = document.getElementById("inputgift1").value;
         var very1 = document.getElementById("inputvery1").value;
         var bagii1 = document.getElementById("bagii1").value;
-        var average = +piece1 + +gift1 + +very1 + +bagii1 ;
-        document.getElementById("tatol1").value = average /4;
+        var aver = +piece1 + +gift1 + +very1 + +bagii1 ;
+        var n3=aver /4;
+        if(n3 ==1)
+        document.getElementById("tato").value ="a" ;
+       else  if(n3 ==2)
+        document.getElementById("tato").value ="b" ;
+       else  if(n3 ==3)
+        document.getElementById("tato").value ="c" ;
+       else  if(n3 ==4)
+        document.getElementById("tato").value ="d" ;
+        
 
         var piece2 = document.getElementById("inputpiece2").value;
         var gift2 = document.getElementById("inputgift2").value;
         var very2 = document.getElementById("inputvery2").value;
         var bagii2 = document.getElementById("bagii2").value;
-        var average = +piece2 + +gift2 + +very2 + +bagii2 ;
-        document.getElementById("tatol2").value = average /4;
+        var avera = +piece2 + +gift2 + +very2 + +bagii2  ;
+        var n4=avera /4;
+        if(n4 ==1)
+        document.getElementById("tatol2").value ="a" ;
+       else  if(n4 ==2)
+        document.getElementById("tatol2").value ="b" ;
+       else  if(n4 ==3)
+        document.getElementById("tatol2").value ="c" ;
+       else  if(n4 ==4)
+        document.getElementById("tatol2").value ="d" ;
+
+
+        var akhir=+n1 + +n2 + +n3 + +n4;
+         document.getElementById("rata").value = akhir /4 ;
     }
 
 </script>

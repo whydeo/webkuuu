@@ -15,27 +15,16 @@ class nilaicontroller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(request $request)
-    {
-                $siswa =siswa::where([
-                    ['id_kelas','!=',null],
-                    [function ($query)use($request){
-                        if(($term = $request->term)){
-                            $query->orWhere('id_kelas','like','%'.$term.'%')->get();
-                        }
-                    }]
-                ])
-                ->orderBy('id','desc')
-                ->paginate(25);
-                
-            // $posts = Job::search($searchTerm, $cityName)
-            // ->orderBy('created_at', 'desc')
-            // ->where('id_kelas', '0')
-            // ->paginate(10);
+    {   
+        $keyword = $request->keyword;
+        $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
+        ->select('siswas.*', 'kelas.kelas as kelas')
+        ->where('kelas', 'LIKE', '%'.$keyword.'%')
+        ->get();
+        return view('nilai.nilai', compact(
+            'siswa', 'keyword'  ));
             
-             $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
-            ->select('siswas.*', 'kelas.kelas as kelas')
-            ->get();
-        return view('nilai.nilai')->with(compact('siswa'));
+       
     
 
 }
@@ -46,6 +35,9 @@ class nilaicontroller extends Controller
      */
     public function create()
     {  
+        $kelas = kelas::all();
+        return view('nilai.nilai',compact('kelas'));
+
     }
 
     /**
