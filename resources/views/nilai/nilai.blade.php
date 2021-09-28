@@ -80,8 +80,8 @@
                 <td><label >{{ $siswa->absen }} </label></td>
                 <td><label >{{ $siswa->nama }}</td>
                 <td><label>{{ $siswa->jk }}</td>
-                <td><input name="id_siswa" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
-                <td><input name="id_kelas" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
+                <td><input name="id_siswa[]" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
+                <td><input name="id_kelas[]" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
               
                 <td><input  type="number"  id="inputProductPrice" oninput="myFunction()" ></td>
                 <td> <input type="number"  id="inputGST" oninput="myFunction()"> </td>
@@ -106,8 +106,6 @@
                 <td><input type="number"  id="inputvery2" oninput="myFunction()"> </td>
                 <td> <input type="number" id="bagii2" oninput="myFunction()">
                 <td><input  type="text"   id="tatol2"   name="berhasil[]"></td>
-
-
 
                 <td><input  type="text"    name="keterangan[]"></td>
                
@@ -170,13 +168,18 @@
             });
 
      });
-     function myFunction() {
+     
+     function myFunction() 
+     {
+         
+        
         var price = document.getElementById("inputProductPrice").value;
         var gst = document.getElementById("inputGST").value;
         var delivery = document.getElementById("inputDelivery").value;
         var bagi = document.getElementById("bagi").value;
         var ave= +price + +gst + +delivery + +bagi ;
         var n1=ave /4;
+
         if(n1 ==1)
         document.getElementById("total").value ="a" ;
        else  if(n1 ==2)
@@ -185,7 +188,7 @@
         document.getElementById("total").value ="c" ;
        else  if(n1 ==4)
         document.getElementById("total").value ="d" ;
-        
+         
         
          
         var piece = document.getElementById("inputpiece").value;
@@ -234,12 +237,11 @@
         document.getElementById("tatol2").value ="c" ;
        else  if(n4 ==4)
         document.getElementById("tatol2").value ="d" ;
-
-
-        var akhir=+n1 + +n2 + +n3 + +n4;
-         document.getElementById("rata").value = akhir /4 ;
+        
     }
 
+     
+  
 </script>
 @stop
 

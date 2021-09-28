@@ -64,12 +64,12 @@ class nilaicontroller extends Controller
                 $nilai->berdaya= $request->get("berdaya")[$key];
                 $nilai->berhasil= $request->get("berhasil")[$key];
                 $nilai->keterangan= $request->get("keterangan")[$key];
-                $nilai->id_siswa = $request->get("siswas")[0];
-                $siswa->id_kelas = $request->get("kelas")[1];
+                $nilai->id_kelas = $request->get("id_kelas")[0];
+                $nilai->id_siswa = $request->get("id_siswa")[0];
                 $nilai->save();
                 
             }
-
+            // return redirect('admin.index')->with('status', 'udah bisa!');
     
         }}
     /**

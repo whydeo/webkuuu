@@ -13,9 +13,8 @@ class nilai extends Model
         return $this->belongsTo(siswa::class); 
     }
      
-    public function detailnilai(){
-        return $this->hasMany(detailnilai::class); 
+    public function kelas(){
+        return $this->belongsTo(kelas::class); 
     }
-
 
 }
