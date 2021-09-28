@@ -45,8 +45,9 @@
           <tr>
               <th data-sortable="true" width="10px">absen</th>
               <th data-sortable="true">nama</th>
-              <th data-sortable="true">kelas</th>
-              <th data-sortable="false">jenis kelamin</th>
+              <th data-sortable="true"j>jenis kelamin</th>
+              <th data-sortable="true"j>id</th>
+              <th data-sortable="false">id kelas </th>
               <th data-sortable="true">A</th>
               <th data-sortable="true">B</th>
               <th data-sortable="true">C</th>
@@ -74,11 +75,14 @@
         
             @if ($siswa->count() > 0)
             @foreach ($siswa as $siswa)
-              <tr>                               
+              <tr>
+                                         
                 <td><label >{{ $siswa->absen }} </label></td>
                 <td><label >{{ $siswa->nama }}</td>
                 <td><label>{{ $siswa->jk }}</td>
-                <td><label  for="input" name="kelas">{{ $siswa->kelas }}</td>
+                <td><input name="id_siswa" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
+                <td><input name="id_kelas" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
+              
                 <td><input  type="number"  id="inputProductPrice" oninput="myFunction()" ></td>
                 <td> <input type="number"  id="inputGST" oninput="myFunction()"> </td>
                 <td><input type="number"  id="inputDelivery" oninput="myFunction()"> </td>
@@ -102,6 +106,11 @@
                 <td><input type="number"  id="inputvery2" oninput="myFunction()"> </td>
                 <td> <input type="number" id="bagii2" oninput="myFunction()">
                 <td><input  type="text"   id="tatol2"   name="berhasil[]"></td>
+
+
+
+                <td><input  type="text"    name="keterangan[]"></td>
+               
 
               </tr>
         @endforeach

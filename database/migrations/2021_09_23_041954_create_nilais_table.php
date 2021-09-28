@@ -21,6 +21,7 @@ class CreateNilaisTable extends Migration
             $table->string('berhasil');
             $table->bigInteger('id_siswa')->unsigned();
             $table->bigInteger('id_kelas')->unsigned();
+            $table->string('keterangan');
             $table->timestamps();
             $table->foreign('id_siswa')->references('id')->on('siswas')->onDelete('cascade');
             $table->foreign('id_kelas')->references('id_kelas')->on('kelas')->onDelete('cascade');             

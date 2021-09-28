@@ -64,8 +64,8 @@ class nilaicontroller extends Controller
                 $nilai->berdaya= $request->get("berdaya")[$key];
                 $nilai->berhasil= $request->get("berhasil")[$key];
                 $nilai->keterangan= $request->get("keterangan")[$key];
-                $nilai->id_siswa = $request->get("siswas")[$key];
-                $nilai->id_kelas = $request->get("kelas")[$key  ];
+                $nilai->id_siswa = $request->get("siswas")[0];
+                $siswa->id_kelas = $request->get("kelas")[1];
                 $nilai->save();
                 
             }
