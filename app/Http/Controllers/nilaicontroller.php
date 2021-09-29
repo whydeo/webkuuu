@@ -56,7 +56,8 @@ class nilaicontroller extends Controller
             $nilai["berbudi.{$key}"] = 'required';
             $nilai["berdaya.{$key}"] = 'required';
             $nilai["berhasil.{$key}"] = 'required';
-
+            $nilai["id_kelas.{$key}"] = 'required';
+            $nilai["id_siswa.{$key}"] = 'required';
         if ($validator->passes()) {
                 $nilai = new nilai;
                 $nilai->berkualitas = $request->get("berkualitas")[$key];
@@ -64,8 +65,10 @@ class nilaicontroller extends Controller
                 $nilai->berdaya= $request->get("berdaya")[$key];
                 $nilai->berhasil= $request->get("berhasil")[$key];
                 $nilai->keterangan= $request->get("keterangan")[$key];
-                $nilai->id_kelas = $request->get("id_kelas")[0];
-                $nilai->id_siswa = $request->get("id_siswa")[0];
+                $nilai->id_kelas = $request->get("id_kelas")[$key];
+                $nilai->id_siswa = $request->get("id_siswa")[$key];
+              
+
                 $nilai->save();
                 
             }
