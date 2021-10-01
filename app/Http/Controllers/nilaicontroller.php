@@ -23,9 +23,7 @@ class nilaicontroller extends Controller
         ->get();
         return view('nilai.nilai', compact(
             'siswa', 'keyword'  ));
-            
-       
-    
+
 
 }
     /**

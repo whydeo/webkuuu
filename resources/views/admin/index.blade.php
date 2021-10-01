@@ -12,7 +12,7 @@
         <div class="col-lg-12 margin-tb">
            
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('siswa.create') }}">TAMBAH SISWA</a>
+                <a class="btn btn-success" href="{{ route('siswa.create') }}">  TAMBAH SISWA</a>
             </div>
         </div>
     </div>

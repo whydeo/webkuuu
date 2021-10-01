@@ -28,5 +28,5 @@ Route::get('admin/admin', [App\Http\Controllers\adminController::class, 'admin']
 Route::resource('admin/siswa', siswaController::class);
 Route::resource('nilai/nilai', nilaiController::class);
 Route::resource('nilai/detailnilai', nilaiController::class);
-Route::get('export-laravel','ExpornilaiController@export');
+// Route::get('export-laravel','ExpornilaiController@export');
 
