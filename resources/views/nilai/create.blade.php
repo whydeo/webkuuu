@@ -43,32 +43,16 @@
       <table id="my_table_1" data-toggle="table" data-sort-stable="true">
           <thead>
           <tr>
-              <th data-sortable="true" width="10px">absen</th>
-              <th data-sortable="true">nama</th>
-              <th data-sortable="true"j>jenis kelamin</th>
-              <th data-sortable="true"j>id</th>
-              <th data-sortable="false">id kelas </th>
-              <th data-sortable="true">A</th>
-              <th data-sortable="true">B</th>
-              <th data-sortable="true">C</th>
-              <th data-sortable="false">D</th>
-              <th data-sortable="true">berkualitas</th>
-              <th data-sortable="true">A</th>
-              <th data-sortable="true">B</th>
-              <th data-sortable="true">C</th>
-              <th data-sortable="false">D</th>
-              <th data-sortable="true">berbudi</th>
-              <th data-sortable="true">B</th>
-              <th data-sortable="true">C</th>
-              <th data-sortable="false">D</th>
-              <th data-sortable="true">A</th>
-              <th data-sortable="true">berdaya</th>
-              <th data-sortable="true">C</th>
-              <th data-sortable="false">D</th>
-              <th data-sortable="true">A</th>
-              <th data-sortable="true">B</th>
-              <th data-sortable="true">berhasil</th>
-              <th data-sortable="false">keterangan</th>
+              <th  width="10px">absen</th>
+              <th >nama</th>
+              <th >jenis kelamin</th>
+              <th >id</th>
+              <th>id kelas </th>
+              <th colspan="5">berkualitas</th>
+              <th colspan="5">Berbudi</th>
+              <th colspan="5">berdaya</th>
+              <th colspan="5">berhasil</th>
+              <th>keterangan</th>
           </tr>
           </thead>
          <tbody>    
@@ -83,30 +67,6 @@
                 <td><input name="id_siswa[]" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
                 <td><input name="id_kelas[]" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
               
-                <td><input  type="number"  id="inputProductPrice" oninput="myFunction()" ></td>
-                <td> <input type="number"  id="inputGST" oninput="myFunction()"> </td>
-                <td><input type="number"  id="inputDelivery" oninput="myFunction()"> </td>
-                <td> <input type="number"   id="bagi" oninput="myFunction()">
-                <td><input  type="text" id="total" readonly  name="berkualitas[]"></td>
-
-                <td><input  type="number"  id="inputpiece" oninput="myFunction()" ></td>
-                <td> <input type="number"  id="inputgift" oninput="myFunction()"> </td>
-                <td><input type="number"  id="inputvery" oninput="myFunction()"> </td>
-                <td> <input type="number"   id="bagii" oninput="myFunction()">
-                <td><input  type="text" id="tatol"  readonly name="berbudi[]"></td>
-
-                <td><input  type="number"  id="inputpiece1" oninput="myFunction()" ></td>
-                <td> <input type="number"  id="inputgift1" oninput="myFunction()"> </td>
-                <td><input type="number"  id="inputvery1" oninput="myFunction()"> </td>
-                <td> <input type="number"   id="bagii1" oninput="myFunction()">
-                <td><input  type="text" id="tato" readonly  name="berdaya[]"></td>
-                
-                <td><input  type="number" id="inputpiece2" oninput="myFunction()" ></td>
-                <td> <input type="number" id="inputgift2" oninput="myFunction()"> </td>
-                <td><input type="number"  id="inputvery2" oninput="myFunction()"> </td>
-                <td> <input type="number" id="bagii2" oninput="myFunction()">
-                <td><input  type="text"   id="tatol2"  readonly name="berhasil[]"></td>
-
                 <td><input  type="text"    name="keterangan[]"></td>
                
 

@@ -16,5 +16,8 @@ class nilai extends Model
     public function kelas(){
         return $this->belongsTo(kelas::class); 
     }
+    public function guru(){
+        return $this->belongsTo(guru::class); 
+    }
 
 }
