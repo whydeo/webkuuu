@@ -8,6 +8,33 @@
 
 @section('content')
 <body>
+    <div>
+        <div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ route('siswa.index') }}" method="GET" role="search">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <button class="btn btn-outline-secondary" type="submit">Button</button>
+                        </div>
+                        <select class="custom-select" id="inputGroupSelect03" name="keyword">
+                          <option selected>Choose...</option>
+                          <option value="">One</option>
+                          <option value="">Two</option>
+                          <option value="">Three</option>
+                          <option value="">Three</option>
+                          <option value="">Three</option>
+                        </select>
+                       <a href="{{ route('siswa.index') }}" class=" mt-1">
+                        <span class="input-group-btn">
+                       <button class="btn btn-danger" type="button" title="Refresh page">
+                        <span class="fas fa-sync-alt"></span>
+                        </button>
+                      </a>
+                      </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
            
@@ -70,8 +97,10 @@
 </body>
 @stop
 @section('css')
+
 <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+
 <script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>

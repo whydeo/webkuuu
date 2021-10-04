@@ -15,15 +15,18 @@ class siswaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(request $request)
 
 
-    {
+    {  
+        $keyword = $request->keyword;
         $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
         ->select('siswas.*', 'kelas.kelas as kelas')
+        ->where('kelas', 'LIKE', '%'.$keyword.'%')
         ->get();
+       
 
-        return view('admin.index')->with(compact('siswa'));
+        return view('admin.index')->with(compact('siswa','keyword'));
 
         // 
         //

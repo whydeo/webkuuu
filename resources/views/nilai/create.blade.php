@@ -14,7 +14,7 @@
     <div>
         <div class="mx-auto pull-right">
             <div class="">
-                <form action="{{ route('nilai.index') }}" method="GET" role="search">
+                <form action="{{ route('nilai.create') }}" method="GET" role="search">
 
                     <div class="input-group">
                         <span class="input-group-btn mr-5 mt-1">
@@ -23,7 +23,7 @@
                             </button>
                         </span>
                         <input type="text" class="form-control mr-2" name="keyword" value="{{ $keyword }}"  placeholder="Search kelasi" id="term">
-                        <a href="{{ route('nilai.index') }}" class=" mt-1">
+                        <a href="{{ route('nilai.create') }}" class=" mt-1">
                             <span class="input-group-btn">
                                 <button class="btn btn-danger" type="button" title="Refresh page">
                                     <span class="fas fa-sync-alt"></span>
@@ -40,11 +40,11 @@
     
     <form name="add_item" id="add_item" >
       {{ csrf_field() }}
-      <table id="my_table_1" data-toggle="table" data-sort-stable="true">
+      <table id="my_table_1" data-toggle="table" width="100%" data-sort-stable="true">
           <thead>
               <tr>
-                  <td></td>
-                <td class="custom-tbl"><select id="guru" class="form-control " style="width:100%;" type="text" name="guru[]">guru
+                 
+                <td colspan="5"  class="custom-tbl"><select id="guru" class="form-control " style="width:100%;" type="text" name="guru[]">guru
                     <option value="">guru</option>
                     @foreach ($guru as $item)
                     <option value="{{$item->id_guru}}">{{$item->nama}}</option>
@@ -52,10 +52,11 @@
                     </select></td>
               </tr>
           <tr>
-              <th  width="10px">absen</th>
-              <th >nama</th>
+              <th  >absen</th>
+              <th>nama</th>
+              
               <th >jenis kelamin</th>
-              <th >id</th>
+              <th  >id siswa</th>
               <th>id kelas </th>
               <th colspan="5">berkualitas</th>
               <th colspan="5">Berbudi</th>
@@ -66,77 +67,81 @@
           </thead>
          <tbody>    
      
+            <tr>
+                <td colspan="5"></td>
+            </tr>
             @if ($siswa->count() > 0)
             @foreach ($siswa as $siswa)
 
             <tr class="4b">
                            
-                <td><label >{{ $siswa->absen }} </label></td>
-                <td><label >{{ $siswa->nama }}</td>
+                <td ><label >{{ $siswa->absen }} </label></td>
+                <td style="width: 90px;"><label >{{ $siswa->nama }}</td>
+               
                 <td><label>{{ $siswa->jk }}</td>
                 <td><input name="id_siswa[]" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
                 <td><input name="id_kelas[]" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5;" size="1" readonly ></td>
               
              
 					<td class="berbudi1 berbudi">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berbudi2 berbudi">
-						<input type="text" value="" size="5" name="kualitas 1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas 1" class="4binput">
 					</td>
 					<td class="berbudi3 berbudi">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berbudi4 berbudi">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berbudi5 berbudi">
-						<input type="text" value="" size="5" name="berkualitas[]" class="4binput" readonly>
+						<input type="text" value="" size="1" name="berkualitas[]" class="4binput" readonly>
 					</td>
 					<td class="berdaya1 berdaya">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berdaya2 berdaya">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berdaya3 berdaya">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berdaya4 berdaya">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="berdaya5 berdaya">
-						<input type="text" value="" size="5" name="berbudi[]" class="4binput" readonly>
+						<input type="text" value="" size="1" name="berbudi[]" class="4binput" readonly>
 					</td>
 					<td class="kualitas1 kualitas">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="kualitas2 kualitas">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="kualitas3 kualitas">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="kualitas4 kualitas">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="kualitas5 kualitas">
-						<input type="text" value="" size="5" name="berdaya[]" class="4binput" readonly>
+						<input type="text" value="" size="1" name="berdaya[]" class="4binput" readonly>
 					</td>
                     <td class="hasil1 hasil">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="hasil2 hasil">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="hasil3 hasil">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="hasil4 hasil">
-						<input type="text" value="" size="5" name="kualitas1" class="4binput">
+						<input type="text" value="" size="1" name="kualitas1" class="4binput">
 					</td>
 					<td class="hasil5 hasil">
-						<input type="text" value="" size="5" name="berhasil[]" class="4binput" readonly>
+						<input type="text" value="" size="1" name="berhasil[]" class="4binput" readonly>
 					</td>
 
                     <td >
@@ -201,9 +206,10 @@
                     type: 'json',
                   
                 });
-           
+                responsive: true
             });
      });
+     
    $(document).ready(function(){
 
 				function nilai(b4){
