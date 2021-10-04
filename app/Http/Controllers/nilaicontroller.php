@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\nilai;
 use App\Models\siswa;
 use App\Models\kelas;
+use App\Models\guru;
 use Illuminate\Support\Facades\Validator;
 class nilaicontroller extends Controller
 {
@@ -31,10 +32,17 @@ class nilaicontroller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(request $request)
     {  
-        $kelas = kelas::all();
-        return view('nilai.nilai',compact('kelas'));
+        $guru = guru::all();
+        $keyword = $request->keyword;
+        $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
+        ->select('siswas.*', 'kelas.kelas as kelas')
+        ->where('kelas', 'LIKE', '%'.$keyword.'%')
+        ->get();
+        return view('nilai.create', compact(
+            'siswa', 'keyword','guru' ));
+     
 
     }
 
