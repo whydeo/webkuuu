@@ -26,7 +26,7 @@ class siswaController extends Controller
         ->get();
        
 
-        return view('admin.index')->with(compact('siswa','keyword'));
+        return view('admin.index')->with(compact('keyword','siswa'));
 
         // 
         //

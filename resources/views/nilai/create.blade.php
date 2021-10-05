@@ -47,14 +47,13 @@
                 <td colspan="5"  class="custom-tbl"><select id="guru" class="form-control " style="width:100%;" type="text" name="guru[]">guru
                     <option value="">guru</option>
                     @foreach ($guru as $item)
-                    <option value="{{$item->id_guru}}">{{$item->nama}}</option>
+                    <option value="{{$item->id_guru}}">{{$item->guru}}</option>
                     @endforeach
                     </select></td>
               </tr>
           <tr>
               <th  >absen</th>
               <th>nama</th>
-              
               <th >jenis kelamin</th>
               <th  >id siswa</th>
               <th>id kelas </th>
@@ -70,10 +69,13 @@
             <tr>
                 <td colspan="5"></td>
             </tr>
+            @isset($keyword)
+                
+           
             @if ($siswa->count() > 0)
             @foreach ($siswa as $siswa)
 
-            <tr class="4b">
+                 <tr class="4b">
                            
                 <td ><label >{{ $siswa->absen }} </label></td>
                 <td style="width: 90px;"><label >{{ $siswa->nama }}</td>
@@ -169,7 +171,7 @@
 
 @endif
 </body>
-       
+@endisset
 @stop
 
 @section('css')

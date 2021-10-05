@@ -22,7 +22,7 @@
                                 <span class="fas fa-search"></span>
                             </button>
                         </span>
-                        <input type="text" class="form-control mr-2" name="keyword" value="{{ $keyword }}"  placeholder="Search kelasi" id="term">
+                        <input type="text" class="form-control mr-2" name="keyword" value="{{ $keyword }}"  placeholder="Search kelas" id="term">
                         <a href="{{ route('nilai.index') }}" class=" mt-1">
                             <span class="input-group-btn">
                                 <button class="btn btn-danger" type="button" title="Refresh page">
@@ -52,46 +52,64 @@
     </div>
     
         <div class=" box-body table-responsive ">
+            
             <table id="example1" class="table table-bordered table-striped">
+               
                 <thead>
+                    <tr>
+                    @isset($keyword)
+                    
+                    
+                   
+                    @endisset
+                        </td>
+                    </tr>
                     <tr>
                         <th width="5px">absen</th>
                         <th>nama</th>
                         <th>kelas</th>
                         <th>jenis kelamin</th>
-                        <th>action</th>
+                        <th>berbudi</th>
+                        <th>berkualitas</th>
+                        <th>berdaya</th>
+                        <th>berhasil</th>
+                        <th>keterangan</th>
+
+                       
                     
                     </tr>
                 </thead>
+                
                 <tbody>
-                 
-                      @foreach ($siswa as $siswa)
+                        @isset($keyword)
+                            
+                      @foreach ($nilai as $data)
                       
                       <tr>
                          
 
-                          <td>{{ $siswa->absen }}</td>
-                          <td>{{ $siswa->nama }}</td>
-                          <td>{{ $siswa->kelas }}</td>
-                          <td>{{ $siswa->jk }}</td>
+                        <td>{{ $data->absen }}</td>
+                        <td>{{ $data->nama }}</td>
+                        <td>{{ $data->kelas }}</td>
+                        <td>{{ $data->jk }}</td>
+                        <td>{{ $data->berbudi }}</td>
+                        <td>{{ $data->berkualitas }}</td>
+                        <td>{{ $data->berdaya }}</td>
+                        <td>{{ $data->berhasil }}</td>
+                        <td>{{ $data->keterangan }}</td>
 
                    
-                    <td class="text-center">
-                    <form action="{{ route('siswa.destroy',$siswa->id) }}" method="POST">
+                    
+                    
  
-                    <a class="btn btn-info btn-sm" href="{{ route('siswa.show',$siswa->id) }}">Show</a>
- 
-                    <a class="btn btn-primary btn-sm" href="{{ route('siswa.edit',$siswa->id) }}">Edit</a>
- 
-                    @csrf
-                    @method('DELETE')
- 
-                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?')">Delete</button>
+                   
+                   
                 </form>
             </td>
         </tr>
         @endforeach
     </table>
+    @endisset
  
     {{-- {!! $siswa->links() !!} --}}
 </body>

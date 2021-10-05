@@ -17,13 +17,15 @@ class nilaicontroller extends Controller
      */
     public function index(request $request)
     {   
+       
         $keyword = $request->keyword;
-        $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
-        ->select('siswas.*', 'kelas.kelas as kelas')
-        ->where('kelas', 'LIKE', '%'.$keyword.'%')
+        $nilai = nilai::join('siswas', 'nilais.id_siswa', '=', 'siswas.id')
+        ->join('kelas','nilais.id_kelas','=','kelas.id_kelas')
+        ->join('gurus','nilais.id_guru','=','gurus.id_guru')
+        ->where('kelas', 'NOT LIKE', '%'.$keyword.'%')
         ->get();
         return view('nilai.nilai', compact(
-            'siswa', 'keyword'  ));
+             'keyword','nilai'));
 
 
 }
@@ -38,7 +40,8 @@ class nilaicontroller extends Controller
         $keyword = $request->keyword;
         $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
         ->select('siswas.*', 'kelas.kelas as kelas')
-        ->where('kelas', 'LIKE', '%'.$keyword.'%')
+        ->where('kelas', 'like', '%'.$keyword.'%')
+        ->limit(25)
         ->get();
         return view('nilai.create', compact(
             'siswa', 'keyword','guru' ));
