@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'nilai')
 
 @section('content_siswa')
-    <h1>Dashboard</h1>
+    <h1>input</h1>
 @stop
 
 @section('content')
@@ -16,20 +16,33 @@
             <div class="">
                 <form action="{{ route('nilai.index') }}" method="GET" role="search">
 
-                    <div class="input-group">
-                        <span class="input-group-btn mr-5 mt-1">
-                            <button class="btn btn-info" type="submit" title="Search kelas">
-                                <span class="fas fa-search"></span>
-                            </button>
-                        </span>
-                        <input type="text" class="form-control mr-2" name="keyword" value="{{ $keyword }}"  placeholder="Search kelas" id="term">
-                        <a href="{{ route('nilai.index') }}" class=" mt-1">
-                            <span class="input-group-btn">
-                                <button class="btn btn-danger" type="button" title="Refresh page">
-                                    <span class="fas fa-sync-alt"></span>
-                                </button>
-                            </span>
-                        </a>
+                    <div class="input-group mb-3">
+                        <button class="btn btn-outline-danger" type="submit">Button</button>
+                        <select class="form-select" id="term" name=" keyword"value="{{$keyword}} aria-label="Example select with button addon">
+                          <option selected >pilih kelas</option>
+                          <option value="x RPL">X RPL</option>
+                          <option value="X MM">Two</option>
+                          <option value="X BKP">Three</option>
+                          <option value="x TKRO">X RPL</option>
+                          <option value="XII">XII</option>
+                          <option value="3">Three</option>
+                          <option value="x RPL">X RPL</option>
+                          <option value="2">Two</option>
+                          <option value="3">Three</option>
+                          <option value="3">Three</option>
+                          <option value="3">Three</option>
+                          <option value="x RPL">X RPL</option>
+                          <option value="x">x</option>
+                          <option value="3">Three</option>
+                          <option value="3">Three</option>
+                        </select>
+                       <a href="{{ route('nilai.index') }}" class=" mt-1">
+                        <span class="input-group-btn">
+                       <button class="btn btn-danger" type="button" title="Refresh page">
+                        <span class="fas fa-sync-alt"></span>
+                        </button>
+                      </a>
+                      </div>
                     </div>
                 </form>
             </div>
@@ -52,8 +65,7 @@
     </div>
     
         <div class=" box-body table-responsive ">
-            
-            <table id="example1" class="table table-bordered table-striped">
+<a href="{{ route('export') }}" class="btn btn-primary">Export Excel</a>            <table id="example1" class="table table-bordered table-striped">
                
                 <thead>
                     <tr>

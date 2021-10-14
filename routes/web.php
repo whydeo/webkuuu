@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\siswaController;
 use App\Http\Controllers\nilaiController;
-use App\Http\Controllers\ExpornilaiController;
-
+use App\Http\Controllers\wkelasController;
+use App\Exports\nilaiExport;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +24,22 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('admin', [AdminController::class, 'admin']);
+});
+Route::middleware(['guru'])->group(function () {
+    Route::get('guru', [nilaiController::class, 'index']);
+});
+Route::middleware(['walikelas'])->group(function () {
+    Route::get('guru', [wkelasController::class, 'wkelas']);
+});
+Route::get('/logout', function() {
+    Auth::logout();
+    redirect('/');
+});
 Route::get('admin/admin', [App\Http\Controllers\adminController::class, 'admin'])->name('admin');
 Route::resource('admin/siswa', siswaController::class);
 Route::resource('nilai/nilai', nilaiController::class);
-Route::resource('nilai/detailnilai', nilaiController::class);
-// Route::get('export-laravel','ExpornilaiController@export');
-
+Route::get('wkelas/wkelas', [App\Http\Controllers\wkelasController::class, 'wkelas'])->name('wkelas');
+Route::get('nilai/export/', [nilaiController::class, 'export'])->name('export');

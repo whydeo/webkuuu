@@ -9,10 +9,14 @@
 
 @section('content')  
 <body>
-
+    <div class="float-right">
+        <a class="btn btn-secondary" href="{{ route('siswa.index') }}"> Back</a>
+    </div>
+    <br><br><br>
     <div class="container-fluid">
         <div class="row">
-    
+       
+       
                 <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading"><h3 class="panel-title">Add Items</h3></div>
@@ -27,11 +31,8 @@
                
                             <div class="table-responsive">
                                 <table class='table table-bordered table-hover' id="tab_logic">
-                         
-                                    <thead>
-                                       
+                                    <thead>                     
                                         <tr class='info'>
-                                           
                                             <th style='width:10%;'>absen</th>
                                             <th style='width:25%;'>nama</th>
                                             <th style='width:10%;'>jenis kelamin</th>
@@ -50,41 +51,25 @@
                                             <option value="{{$item->id_kelas}}">{{$item->kelas}}</option>
                                             @endforeach
                                             </select></td>
-                                             
-                                           
                                             <td class="custom-tbl"><button type="button" id="add" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-plus"></span></button></td>
                                         </tr>
                                     </thead>
                                     <tbody id="dynamic_field">
-
                                     <tbody>
-                                  
-
                                 </table>
                             </div>
-
-
                             <button type="button" id="submit" name="submit" class="btn btn-default">Submit</button>
                         </form>
-
                     </div>
-
                 </div>
             </div>
-
         </div>
-
-
     </div>
 @stop
-
 @section('css')
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-
 @stop
-
-
 @section('js')
 <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script> 
@@ -92,12 +77,8 @@
  <meta name="_token"  content="{{csrf_token()}}">
   <script> console.log('Hi!'); </script>
     <script type="text/javascript">
-
-
-
         $(document).ready(function () {
             var i = 1;
-        
             $('#add').click(function () {
                 i++;
                 $('#dynamic_field').append('<tr id="row' + i 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\siswa;
+use Auth;
 class adminController extends Controller
 {
     /**

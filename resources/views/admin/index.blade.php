@@ -28,7 +28,7 @@
                           <option value="3">Three</option>
                           <option value="3">Three</option>
                           <option value="x RPL">X RPL</option>
-                          <option value="2">Two</option>
+                          <option value="x">x</option>
                           <option value="3">Three</option>
                           <option value="3">Three</option>
                         </select>
@@ -48,16 +48,16 @@
         <div class="col-lg-12 margin-tb">
            
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('siswa.create') }}">  TAMBAH SISWA</a>
+                <a class="btn btn-success" href="{{ route('siswa.create') }}">  INPUT SISWA</a>
             </div>
         </div>
     </div>
  
-    @if ($message = Session::get('success'))
+    @if (session('status'))
     <div class="alert alert-success">
-        <p>{{ $message }}</p>
+        {{ session('status') }}
     </div>
-    @endif
+@endif
  
     
         <div class=" box-body table-responsive ">

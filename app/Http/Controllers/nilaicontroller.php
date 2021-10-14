@@ -7,6 +7,9 @@ use App\Models\nilai;
 use App\Models\siswa;
 use App\Models\kelas;
 use App\Models\guru;
+use App\Exports\nilaiExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Support\Facades\Validator;
 class nilaicontroller extends Controller
 {
@@ -22,12 +25,20 @@ class nilaicontroller extends Controller
         $nilai = nilai::join('siswas', 'nilais.id_siswa', '=', 'siswas.id')
         ->join('kelas','nilais.id_kelas','=','kelas.id_kelas')
         ->join('gurus','nilais.id_guru','=','gurus.id_guru')
-        ->where('kelas', 'NOT LIKE', '%'.$keyword.'%')
+        ->where('kelas', '=', $keyword)
+        ->limit(25)
         ->get();
         return view('nilai.nilai', compact(
-             'keyword','nilai'));
+            'keyword','nilai'));
 
 
+}
+
+public function export()
+
+{
+
+    return Excel::download(new nilaiExport, 'nilai.xlsx');
 }
     /**
      * Show the form for creating a new resource.
@@ -40,7 +51,7 @@ class nilaicontroller extends Controller
         $keyword = $request->keyword;
         $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
         ->select('siswas.*', 'kelas.kelas as kelas')
-        ->where('kelas', 'like', '%'.$keyword.'%')
+        ->where('kelas', '=',$keyword)
         ->limit(25)
         ->get();
         return view('nilai.create', compact(
@@ -130,4 +141,6 @@ class nilaicontroller extends Controller
     {
         //
     }
+
+
 }

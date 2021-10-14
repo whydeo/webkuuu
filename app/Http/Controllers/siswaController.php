@@ -22,7 +22,8 @@ class siswaController extends Controller
         $keyword = $request->keyword;
         $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
         ->select('siswas.*', 'kelas.kelas as kelas')
-        ->where('kelas', 'LIKE', '%'.$keyword.'%')
+        ->where('kelas', '=',$keyword)
+        ->limit(25)
         ->get();
        
 
@@ -79,6 +80,7 @@ class siswaController extends Controller
                 $siswa->save();
                 
             }
+            return redirect('admin/index')->with('status', 'siswa berhasil ditambah!');
 
 
             // $data =$request ->all();

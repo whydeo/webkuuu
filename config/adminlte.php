@@ -233,8 +233,6 @@ return [
             'url'  => '/home',
             'icon' => 'fas fa-fw fa-home',
         ],
-    
-       
         [
             'text' => 'ADMIN',
             'url'  => 'admin/admin',
@@ -251,10 +249,11 @@ return [
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'change-password',
-            'icon' => 'fas fa-fw  fa-unlock',
+            'text' => 'WALIKELAS',
+            'url'  => 'wkelas/wkelas',
+            'icon' => 'fas fa-fw fa-user',
         ],
+       
     ],
     /*
     |--------------------------------------------------------------------------
