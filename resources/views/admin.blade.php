@@ -11,11 +11,11 @@
     <br>
     <br>
     <div>
-        <div class="mx-auto pull-right">
+        <div class="container-md">
             <div class="">
                 <form action="{{ route('admin.index') }}" method="GET" role="search">
                     <div class="input-group mb-3">
-                        <button class="btn btn-outline-danger" type="submit">Button</button>
+                        <button class="btn btn-outline-danger" type="submit">Cari</button>
                         <input type="text"id="term" name=" keyword"value="{{$keyword}}">
                        <a href="{{ route('admin.index') }}" class=" mt-1">
                         <span class="input-group-btn">

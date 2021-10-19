@@ -50,3 +50,7 @@ Route::resource('admin', adminController::class);
 Route::resource('guru', guruController::class);
 Route::resource('kelas', kelasController::class);
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

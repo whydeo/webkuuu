@@ -14,13 +14,13 @@
        
    </body>
  
-      <h2 class="text-center">form guru</h2>
+      <h2 class="text-center">Form Guru</h2>
       <h2 class="text-center"></h2>
       <div class="row mt-5 mb-5">
         <div class="col-lg-12 margin-tb">
            
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('guru.create') }}">  INPUT SISWA</a>
+                <a class="btn btn-success" href="{{ route('guru.create') }}">  INPUT GURU</a>
             </div>
         </div>
     </div>

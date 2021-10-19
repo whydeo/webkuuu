@@ -39,7 +39,7 @@
                         <span class="input-group-btn">
                        <button class="btn btn-danger" type="button" title="Refresh page">
                         <span class="fas fa-sync-alt"></span>
-                        </button>
+                        </button>   
                       </a>
                       </div>
                     </div>
@@ -100,11 +100,11 @@
                  <tr class="4b">
                            
                     <td>{{ $siswa->absen }}</td>
-                    <td><input type="text " readonly  style="border:none;background:D1D3D5; background-color:rgb(243, 242, 237);"value="{{ $siswa->nama }}"></td>
-                <td><input type="text"readonly  style="border:none;background:D1D3D5; background-color:rgb(243, 242, 237);" value="{{ $siswa->jk }}"></td>
+                    <td><input type="text" readonly  style="border:none; background-color:rgb(243, 242, 237);"value="{{ $siswa->nama }}"></td>
+                <td><input type="text" readonly  style="border:none; background-color:rgb(243, 242, 237);" value="{{ $siswa->jk }}"></td>
                
-                <td><input   name="id_siswa[]" value="{{ $siswa->id }}"  style="border:none;background:D1D3D5; background-color:rgb(243, 242, 237);" size="4" readonly ></td>
-                <td><input   name="id_kelas[]" value="{{ $siswa->id_kelas }}"  style="border:none;background:D1D3D5; background-color:rgb(243, 242, 237);" size="4" readonly ></td>
+                <td><input   name="id_siswa[]" value="{{ $siswa->id }}"  style="border:none; background:rgb(243, 242, 237); background-color:rgb(243, 242, 237);" size="4" readonly ></td>
+                <td><input   name="id_kelas[]" value="{{ $siswa->id_kelas }}"  style="border:none;background:rgb(243, 242, 237); background-color:rgb(243, 242, 237);" size="4" readonly ></td>
              
 					<td class="berbudi1 berbudi">
 						<input type="text" value="3" size="1" value="3" name="kualitas1" class="4binput">

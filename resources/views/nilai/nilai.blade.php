@@ -12,7 +12,7 @@
     <br>
 
     <div>
-        <div class="mx-auto pull-right">
+        <div class="container-md">
             <div class="">
                 <form action="{{ route('nilai.index') }}" method="GET" role="search">
 
@@ -21,20 +21,20 @@
                         <select class="form-select" id="term" name=" keyword"value="{{$keyword}} aria-label="Example select with button addon">
                           <option selected >pilih kelas</option>
                           <option value="x RPL">X RPL</option>
-                          <option value="X MM">Two</option>
-                          <option value="X BKP">Three</option>
-                          <option value="x TKRO">X RPL</option>
-                          <option value="XII">XII</option>
-                          <option value="3">Three</option>
-                          <option value="x RPL">X RPL</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
-                          <option value="x RPL">X RPL</option>
-                          <option value="x">x</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
+                          <option value="X MM">XI RPL</option>
+                          <option value="X BKP">XII RPL</option>
+                          <option value="x TKRO">X MM</option>
+                          <option value="XII">XI MM</option>
+                          <option value="3">XII MM</option>
+                          <option value="x RPL">X BKP</option>
+                          <option value="2">XI BKP</option>
+                          <option value="3">XII BKP</option>
+                          <option value="3">X TKRO</option>
+                          <option value="3">XI TKRO</option>
+                          <option value="x RPL">XII TKRO</option>
+                          <option value="x">X TB</option>
+                          <option value="3">XI TB</option>
+                          <option value="3">XII TB</option>
                         </select>
                        <a href="{{ route('nilai.index') }}" class=" mt-1">
                         <span class="input-group-btn">
