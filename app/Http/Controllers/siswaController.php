@@ -80,7 +80,6 @@ class siswaController extends Controller
                 $siswa->save();
                 
             }
-            return redirect('admin/index')->with('status', 'siswa berhasil ditambah!');
 
 
             // $data =$request ->all();

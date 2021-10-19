@@ -27,30 +27,56 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware(['admin'])->group(function () {
-    Route::get('admin', [AdminController::class, 'admin']);
-});
-Route::middleware(['guru'])->group(function () {
-    Route::get('guru', [nilaiController::class, 'index']);
-});
-Route::middleware(['walikelas'])->group(function () {
-    Route::get('guru', [wkelasController::class, 'wkelas']);
-});
-Route::get('/logout', function() {
-    Auth::logout();
-    redirect('/');
-});
-Route::resource('admin/siswa', siswaController::class);
-Route::resource('nilai/nilai', nilaiController::class);
-Route::get('wkelas/wkelas', [App\Http\Controllers\wkelasController::class, 'wkelas'])->name('wkelas');
-Route::get('nilai/export/', [nilaiController::class, 'export'])->name('export');
-Route::resource('admin', adminController::class);
-Route::resource('guru', guruController::class);
-Route::resource('kelas', kelasController::class);
+// Route::middleware(['admin'])->group(function () {
+//     Route::get('admin', [AdminController::class, 'admin']);
+// });
+// Route::middleware(['guru'])->group(function () {
+//     Route::get('guru', [nilaiController::class, 'index']);
+// });
+// Route::middleware(['walikelas'])->group(function () {
+//     Route::get('guru', [wkelasController::class, 'wkelas']);
+// });
+// Route::get('/logout', function() {
+//     Auth::logout();
+//     redirect('/');
+// });
+
+
+// Route::get('nilai/export/', [nilaiController::class, 'export'])->name('export');
+
+
 
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/home', [App\Http\Controllers\ownerController::class, 'index'])->name('owner');
+Route::get('/home', [App\Http\Controllers\pembinaController::class, 'index'])->name('pembina');
+
+//hak akses admin
+Route::group(['middleware'=>'admin'], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('admin/siswa', siswaController::class);
+    Route::resource('admin', adminController::class);
+    Route::resource('guru', guruController::class);
+    Route::resource('kelas', kelasController::class);
+});
+
+Route::group(['middleware'=>'guru'], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('nilai/nilai', nilaiController::class);
+});
+Route::group(['middleware'=>'owner'], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::resource('admin/siswa', siswaController::class);
+    Route::resource('admin', adminController::class);
+    Route::resource('guru', guruController::class);
+    Route::resource('kelas', kelasController::class);
+});
+Route::group(['middleware'=>'walikelas'], function(){
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('wkelas/wkelas', [App\Http\Controllers\wkelasController::class, 'wkelas'])->name('wkelas');
+
+});

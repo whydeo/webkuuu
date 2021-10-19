@@ -9,6 +9,12 @@ use Illuminate\Http\Request;
 
 class wkelascontroller extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+ 
     public function wkelas(request $request)
     {
         $keyword = $request->keyword;
