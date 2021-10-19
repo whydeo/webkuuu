@@ -34,12 +34,7 @@ class nilaicontroller extends Controller
 
 }
 
-public function export()
 
-{
-
-    return Excel::download(new nilaiExport, 'nilai.xlsx');
-}
     /**
      * Show the form for creating a new resource.
      *
@@ -47,11 +42,12 @@ public function export()
      */
     public function create(request $request)
     {  
-        $guru = guru::all();
+       
         $keyword = $request->keyword;
+        $guru = guru::all();
         $siswa = siswa::join('kelas', 'siswas.id_kelas', '=', 'kelas.id_kelas')
         ->select('siswas.*', 'kelas.kelas as kelas')
-        ->where('kelas', '=',$keyword)
+        ->where('kelas','=',$keyword)
         ->limit(25)
         ->get();
         return view('nilai.create', compact(
@@ -59,7 +55,6 @@ public function export()
      
 
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -68,7 +63,6 @@ public function export()
      */
     public function store(Request $request)
     {
-         
         $nilai = [];
         $validator = Validator::make($request->all(), $nilai);
         foreach ($request->input('berkualitas') as $key => $value) {

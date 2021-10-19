@@ -65,22 +65,17 @@
     </div>
     
         <div class=" box-body table-responsive ">
-<a href="{{ route('export') }}" class="btn btn-primary">Export Excel</a>            <table id="example1" class="table table-bordered table-striped">
-               
-                <thead>
+{{-- <a href="{{ route('export') }}" class="btn btn-primary">Export Excel</a>      --}}
+       <table id="example1" class="table table-bordered table-striped">
+        @isset($keyword)
+                <thead>            
+                  
                     <tr>
-                    @isset($keyword)
-                    
-                    
-                   
-                    @endisset
-                        </td>
-                    </tr>
-                    <tr>
-                        <th width="5px">absen</th>
+                        <th width="2px">absen</th>
                         <th>nama</th>
                         <th>kelas</th>
                         <th>jenis kelamin</th>
+                        <th>guru</th>
                         <th>berbudi</th>
                         <th>berkualitas</th>
                         <th>berdaya</th>
@@ -93,7 +88,7 @@
                 </thead>
                 
                 <tbody>
-                        @isset($keyword)
+                    
                             
                       @foreach ($nilai as $data)
                       
@@ -104,16 +99,13 @@
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->kelas }}</td>
                         <td>{{ $data->jk }}</td>
+                        <td>{{ $data->guru }}</td>
+
                         <td>{{ $data->berbudi }}</td>
                         <td>{{ $data->berkualitas }}</td>
                         <td>{{ $data->berdaya }}</td>
                         <td>{{ $data->berhasil }}</td>
                         <td>{{ $data->keterangan }}</td>
-
-                   
-                    
-                    
- 
                    
                    
                 </form>
@@ -122,30 +114,49 @@
         @endforeach
     </table>
     @endisset
- 
     {{-- {!! $siswa->links() !!} --}}
 </body>
 @stop
-
 @section('css')
-  
-
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
-<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+ <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.css">
+{{--<script type="text/javascript" language="javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="http://cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
-<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script>
+<script type="text/javascript" language="javascript" src="http://cdn.datatables.net/plug-ins/3cfcc339e89/integration/bootstrap/3/dataTables.bootstrap.js"></script> --}}
 
 @stop
 
 @section('js')
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.1/css/buttons.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
 
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+      $('#example1').DataTable({
+  
+        dom: 'Bfrtip',
+        "buttons": [
+          'excel'
+        ]
+      });
+    });
+  
+  </script>
+
+{{-- 
 <script type="text/javascript">
     $(function() {
         $('#example1').dataTable();
     });
-</script>
+</script> --}}
 @stop
 
 

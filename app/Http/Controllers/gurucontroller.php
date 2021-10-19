@@ -1,33 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\nilai;
-use App\Models\siswa;
-use App\Models\kelas;
-use App\Models\guru;
-use Illuminate\Http\Request;
 
-class admincontroller extends Controller
+use Illuminate\Http\Request;
+use App\Models\guru;
+use DB;
+use Illuminate\Support\Facades\Validator;
+
+class gurucontroller extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index( request $request)
+    public function index()
     {
-        $keyword = $request->keyword;
-        $nilai = nilai::join('siswas', 'nilais.id_siswa', '=', 'siswas.id')
-        ->join('kelas','nilais.id_kelas','=','kelas.id_kelas')
-        ->join('gurus','nilais.id_guru','=','gurus.id_guru')
-        ->where('keterangan', '=', $keyword)
-        ->limit(25)
-        ->get();
+        $guru = DB::table('gurus')->get();
 
-        return view('admin', compact(
-            'keyword','nilai'));
+        return view('guru.index', compact(
+            'guru'));
 
+       
     }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -35,7 +31,7 @@ class admincontroller extends Controller
      */
     public function create()
     {
-        //
+        return view('guru.create');
     }
 
     /**
@@ -46,9 +42,24 @@ class admincontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
+          
+        $guru = [];
+        $validator = Validator::make($request->all(), $guru);
+        foreach ($request->input('guru') as $key => $value) {
+            $guru["guru.{$key}"] = 'required';
+            $guru["mapel.{$key}"] = 'required';
+          
+        if ($validator->passes()) {
+                $guru = new guru;
+                $guru->guru = $request->get("guru")[$key];
+                $guru->mapel = $request->get("mapel")[$key];
+                $guru->save();
+                
+            }
+            return redirect('admin/index')->with('status', 'siswa berhasil ditambah!');
 
+    }
+    }
     /**
      * Display the specified resource.
      *

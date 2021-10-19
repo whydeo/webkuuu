@@ -50,7 +50,7 @@ return [
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'WEBKU',
+    'logo_img_alt' => 'webku',
 
     /*
     |--------------------------------------------------------------------------
@@ -126,7 +126,6 @@ return [
     'classes_brand_text' => '',
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
-    'classes_content_admin' => '/admin',
     'classes_content_siswa' => '/siswa',
     'classes_content' => '',
     'classes_sidebar' => 'sidebar-dark-primary elevation-4',
@@ -235,7 +234,7 @@ return [
         ],
         [
             'text' => 'ADMIN',
-            'url'  => 'admin/admin',
+            'url'  => 'admin',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

@@ -37,15 +37,22 @@ class HomeController extends Controller
         //     return redirect()->to('logout');
         // }
        
-    	$nilai = nilai::where('berbudi','keterangan')->get();
-    	$ni = nilai::where('berkualitas','keterangan')->get();
-    	$na = nilai::where('berdaya','keterangan')->get();
-        $nu= nilai::where('berhasil','keterangan')->get();
-    	$nilai_count = count($nilai);    	
-    	$ni_count = count($ni);
-    	$na_count = count($na);
-        $nu_count = count($nu);
-    	return view('home',compact('nilai_count','ni_count','na_count','nu_count'));
-    }
+    //    
     
-}
+
+
+
+
+    $data = DB::table('nilais')
+    ->select(
+     DB::raw('keterangan as keterangan'),
+     DB::raw('count(*) as number'))
+    ->groupBy('keterangan')
+    ->get();
+ $array[] = ['keterangan', 'Number'];
+ foreach($data as $key => $value)
+ {
+   $array[++$key] = [$value->keterangan, $value->number];
+ }
+ return view('home')->with('keterangan', json_encode($array));
+}}

@@ -5,6 +5,10 @@ use App\Http\Controllers\siswaController;
 use App\Http\Controllers\nilaiController;
 use App\Http\Controllers\wkelasController;
 use App\Exports\nilaiExport;
+use App\Http\Controllers\adminController;
+use App\Http\Controllers\guruController;
+use App\Http\Controllers\kelasController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,8 +42,11 @@ Route::get('/logout', function() {
     Auth::logout();
     redirect('/');
 });
-Route::get('admin/admin', [App\Http\Controllers\adminController::class, 'admin'])->name('admin');
 Route::resource('admin/siswa', siswaController::class);
 Route::resource('nilai/nilai', nilaiController::class);
 Route::get('wkelas/wkelas', [App\Http\Controllers\wkelasController::class, 'wkelas'])->name('wkelas');
 Route::get('nilai/export/', [nilaiController::class, 'export'])->name('export');
+Route::resource('admin', adminController::class);
+Route::resource('guru', guruController::class);
+Route::resource('kelas', kelasController::class);
+
