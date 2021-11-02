@@ -21,7 +21,7 @@
                           <option selected >pilih kelas</option>
                           <option value="x RPL">X RPL</option>
                           <option value="X MM">XI RPL</option>
-                          <option value="X BKP">XII RPL</option>
+                          <option value="XII RPL">XII RPL</option>
                           <option value="x TKRO">X MM</option>
                           <option value="XII">XI MM</option>
                           <option value="3">XII MM</option>
@@ -82,6 +82,7 @@
               <th colspan="5">berdaya</th>
               <th colspan="5">berhasil</th>
               <th>keterangan</th>
+              <th>folow up</th>
           </tr>
           </thead>
          <tbody>    

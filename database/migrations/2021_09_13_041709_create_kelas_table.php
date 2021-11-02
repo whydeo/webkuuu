@@ -17,7 +17,7 @@ class CreateKelasTable extends Migration
             $table->bigIncrements('id_kelas');
             $table->string('kelas');
             $table->string('wkelas');
-            $table->stirng('kodekelas');
+            $table->string('kodekelas');
             $table->timestamps();
         });
     }
