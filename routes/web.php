@@ -57,26 +57,27 @@ Route::get('/home', [App\Http\Controllers\pembinaController::class, 'index'])->n
 
 //hak akses admin
 Route::group(['middleware'=>'admin'], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('admin/siswa', siswaController::class);
+    Route::resource('siswa', siswaController::class);
     Route::resource('admin', adminController::class);
+    Route::post('/import', [App\Http\Controllers\siswaController::class, 'import'])->name('import');
     Route::resource('guru', guruController::class);
     Route::resource('kelas', kelasController::class);
 });
 
 Route::group(['middleware'=>'guru'], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('nilai/nilai', nilaiController::class);
 });
 Route::group(['middleware'=>'owner'], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::resource('admin/siswa', siswaController::class);
-    Route::resource('admin', adminController::class);
-    Route::resource('guru', guruController::class);
-    Route::resource('kelas', kelasController::class);
+     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::resource('admin/siswa', siswaController::class);
+    // Route::resource('admin', adminController::class);
+    // Route::resource('guru', guruController::class);
+    // Route::resource('kelas', kelasController::class);
 });
 Route::group(['middleware'=>'walikelas'], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('wkelas/wkelas', [App\Http\Controllers\wkelasController::class, 'wkelas'])->name('wkelas');
 
 });
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

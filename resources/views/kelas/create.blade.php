@@ -35,11 +35,13 @@
                                         <tr class='info'>
                                             <th >kelas</th>
                                             <th >wali kelas</th>
+                                            <th>kode kelas</th>
                                             <th >ACTION</th>
                                         </tr>
                                     </thead>
                                     <thead>
                                         <tr id="addr0">
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>

@@ -17,25 +17,8 @@
                 <form action="{{ route('wkelas') }}" method="GET" role="search">
 
                     <div class="input-group mb-3">
-                        <button class="btn btn-outline-danger" type="submit">Button</button>
-                        <select class="form-select" id="term" name=" keyword"value="{{$keyword}} aria-label="Example select with button addon">
-                          <option selected >pilih kelas</option>
-                          <option value="x RPL">X RPL</option>
-                          <option value="X MM">Two</option>
-                          <option value="X BKP">Three</option>
-                          <option value="x TKRO">X RPL</option>
-                          <option value="XII">XII</option>
-                          <option value="3">Three</option>
-                          <option value="x RPL">X RPL</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
-                          <option value="x RPL">X RPL</option>
-                          <option value="x">x</option>
-                          <option value="3">Three</option>
-                          <option value="3">Three</option>
-                        </select>
+                        <button class="btn btn-outline-danger" type="submit">Cari</button>
+                        <input type="text"id="term" name=" keyword"value="{{$keyword}}" placeholder="masukan kode kelas">
                        <a href="{{ route('wkelas') }}" class=" mt-1">
                         <span class="input-group-btn">
                        <button class="btn btn-danger" type="button" title="Refresh page">

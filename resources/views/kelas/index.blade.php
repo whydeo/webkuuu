@@ -20,7 +20,7 @@
         <div class="col-lg-12 margin-tb">
            
             <div class="float-right">
-                <a class="btn btn-success" href="{{ route('kelas.create') }}">  INPUT SISWA</a>
+                <a class="btn btn-success" href="{{ route('kelas.create') }}">  INPUT KELAS</a>
             </div>
         </div>
     </div>
@@ -28,8 +28,10 @@
           <table id="example1" class="table table-bordered table-striped">
               <thead>
                   <tr>
-                      <th >nama </th>
-                      <th>mata pelajaran</th>
+                      <th >kelas</th>
+                      <th>wali kelas</th>
+                      <th> kode kelas </th>
+
                  
                   
                   </tr>
@@ -40,6 +42,7 @@
                     <tr>
                        
                         <td>{{ $kelas->kelas }}</td>
+                        <td>{{ $kelas->wkelas }}</td>
                         <td>{{ $kelas->wkelas }}</td>
                        
                       

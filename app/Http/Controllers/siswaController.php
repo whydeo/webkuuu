@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\siswa;
 use App\Models\kelas;
-
+use Excel;
+use App\imports\siswaimport;
 use Illuminate\Support\Facades\Validator;
 use DB;
 class siswaController extends Controller
@@ -54,7 +55,11 @@ class siswaController extends Controller
         return view('admin.create',compact('kelas'));
 
     }
+    public function import(Request $request)
+    {
+        Excel::import(new siswaimport,request()->file('file'));
 
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -63,8 +68,7 @@ class siswaController extends Controller
      */
     public function store(Request $request)
      {      
-         
-        
+      
         $siswa = [];
         $validator = Validator::make($request->all(), $siswa);
         foreach ($request->input('absen') as $key => $value) {

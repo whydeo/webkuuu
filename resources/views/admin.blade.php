@@ -49,6 +49,7 @@
                         <th>WALI KELAS</th>
                         <th>jenis kelamin</th>
                         <th>nilai</th>
+                        <th>folow up</th>
                         <th>mapel</th>
                     
                     </tr>
@@ -68,6 +69,7 @@
                           <td>{{ $data->wkelas }}</td>
                           <td>{{ $data->jk }}</td>
                           <td>{{ $data->keterangan }}</td>
+                          <td>{{ $data->folowup}}</td>
                           <td>{{ $data->mapel }}</td>
 {{--                    
                     <td class="text-center"> --}}

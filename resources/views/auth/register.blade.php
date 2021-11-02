@@ -67,11 +67,11 @@
                             <div class="col-md-6">
                                 <select name="level" id="" class="form-control">
                                     <option value="" selceted>pilih level</option>
-                                    <option value="admin">Admin</option>
-                                    <option value="owner">Owner</option>
-                                    <option value="guru">Guru</option>
-                                    <option value="walikelas">Wali kelas</option>
-                                    <option value="pembina">Pembina</option>
+                                    <option value="1">Admin</option>
+                                    <option value="2">Owner</option>
+                                    <option value="3">Guru</option>
+                                    <option value="4">Wali kelas</option>
+                                    <option value="5">Pembina</option>
                                 </select>
                                 <br>
                         <div class="form-group row mb-0">

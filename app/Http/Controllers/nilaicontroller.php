@@ -30,7 +30,7 @@ class nilaicontroller extends Controller
         $nilai = nilai::join('siswas', 'nilais.id_siswa', '=', 'siswas.id')
         ->join('kelas','nilais.id_kelas','=','kelas.id_kelas')
         ->join('gurus','nilais.id_guru','=','gurus.id_guru')
-        ->where('kelas', '=', $keyword)
+        ->where('wkelas', '=', $keyword)
         ->limit(25)
         ->get();
         return view('nilai.nilai', compact(
@@ -75,6 +75,7 @@ class nilaicontroller extends Controller
             $nilai["berbudi.{$key}"] = 'required';
             $nilai["berdaya.{$key}"] = 'required';
             $nilai["berhasil.{$key}"] = 'required';
+            $nilai["folowup.{$key}"] = 'required';
             $nilai["id_kelas.{$key}"] = 'required';
             $nilai["id_siswa.{$key}"] = 'required';
             $nilai["id_guru.{$key}"] = 'required';
@@ -85,6 +86,7 @@ class nilaicontroller extends Controller
                 $nilai->berdaya= $request->get("berdaya")[$key];
                 $nilai->berhasil= $request->get("berhasil")[$key];
                 $nilai->keterangan= $request->get("keterangan")[$key];
+                $nilai->folowup= $request->get("folowup")[$key];
                 $nilai->id_kelas = $request->get("id_kelas")[$key];
                 $nilai->id_siswa = $request->get("id_siswa")[$key];
                 $nilai->id_guru = $request->get("guru")[0];

@@ -239,7 +239,7 @@ return [
         ],
         [
             'text' => 'SISWA',
-            'url'  => 'admin/siswa',
+            'url'  => 'siswa',
             'icon' => 'fas fa-fw fa-user',
         ],
         [

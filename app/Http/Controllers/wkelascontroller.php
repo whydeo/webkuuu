@@ -21,7 +21,7 @@ class wkelascontroller extends Controller
         $nilai = nilai::join('siswas', 'nilais.id_siswa', '=', 'siswas.id')
         ->join('kelas','nilais.id_kelas','=','kelas.id_kelas')
         ->join('gurus','nilais.id_guru','=','gurus.id_guru')
-        ->where('kelas', '=', $keyword)
+        ->where('wkelas', '=', $keyword)
         ->limit(25)
         ->get();
       

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class siswa extends Model
 {
+    protected $fillable = ['absen','nama','jk','id_kelas'];
     use HasFactory;
     
     public function kelas(){

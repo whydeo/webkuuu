@@ -68,9 +68,7 @@
                     <option value="{{$item->id_guru}}">{{$item->guru}}</option>
                     @endforeach
                     </select></td>
-                   <td colspan="8">
-                    <textarea name="tambahan" placeholder="keterangan tambahan siswa."></textarea>
-                   </td>
+                  
                    
               </tr>
           <tr>
@@ -169,6 +167,9 @@
                     <td class="hasil6 hasil">
 						<input  value=""  name="keterangan[]" class="4binput" >
 					</td>
+                    <td  class="hasil7 hasil">
+                        <textarea name="folowup" class="4binput" ></textarea>
+                    </td>
 
 					
 		
@@ -285,7 +286,35 @@
                             var total2='SANGAT BAIK';
                             $(this).parent().parent().children("."+b4t+"6").children(".4binput").val(total2);
                         }
-                    });		
+
+                        var hasil=n1*4/4;
+
+                        if (hasil > 0 && hasil<1.89)
+                        {
+                            //   textarea.show();
+                         var total3='';
+                                $(this).parent().parent().children("."+b4t+"7").children(".4binput").val(total3);
+                        }
+                        else if(hasil >1.9&&hasil <2.89)
+                        {
+                            //   textarea.show();
+                            var total3='';
+                                $(this).parent().parent().children("."+b4t+"7").children(".4binput").val(total3);
+                        }
+                        else if(hasil >2.9&&hasil<3.89)
+                        {
+                            // textarea.hide();
+                            var total3='tidak perlu diisi';
+                                $(this).parent().parent().children("."+b4t+"7").children(".4binput").val(total3);
+                        }
+                        else if(hasil>3.9&&hasil<4.1)
+                        {
+                            // textarea.hide();
+                            var total3='tidak perlu diisi';
+                                $(this).parent().parent().children("."+b4t+"6").children(".4binput").val(total3);
+                        }
+
+                                            });		
                 }
                 nilai("berbudi");
                 nilai("berdaya");
